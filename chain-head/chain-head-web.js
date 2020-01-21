@@ -1,6 +1,6 @@
 // Import your web-ready dependencies
 import { h, Component, render } from '/web_modules/preact.js'
-import { useEffect } from '/web_modules/preact/hooks.js'
+import { useEffect, useState } from '/web_modules/preact/hooks.js'
 import htm from '/web_modules/htm.js'
 import Client from '/lib/client.js'
 
@@ -8,6 +8,8 @@ const html = htm.bind(h)
 
 // Create your main app component
 function ChainHead (props) {
+  const [chainHead, setChainHead] = useState()
+
   useEffect(() => {
     async function run () {
       const client = new Client({
@@ -16,12 +18,14 @@ function ChainHead (props) {
       })
       const json = await client.request('ChainHead')
       console.log('Jim json', json)
+      setChainHead(JSON.stringify(json, null, 2))
     }
     run()
   }, [])
 
   return html`
     <h1>Chain Head</h1>
+    <pre>${chainHead}</pre>
   `
 }
 
