@@ -11,7 +11,12 @@
   "license": "MIT",
   "dependencies": {
     "@openworklabs/lotus-jsonrpc-engine": "^0.0.5",
+    "htm": "^2.2.1",
     "jayson": "^3.2.0",
-    "jsonrpc-lite": "^2.1.0"
+    "jsonrpc-lite": "^2.1.0",
+    "preact": "^10.2.1"
+  },
+  "devDependencies": {
+    "snowpack": "^1.0.5"
   }
 }
