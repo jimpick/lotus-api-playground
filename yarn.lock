@@ -708,14 +708,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@jimpick/preact-json-tree@^0.11.2":
-  version "0.11.2"
-  resolved "https://registry.npmjs.org/@jimpick/preact-json-tree/-/preact-json-tree-0.11.2.tgz#ffb7fe3194ed4665d818825a5392f934fb61b183"
-  integrity sha512-swTsH7J9UZ2L4BJ1BPPgjdxcfbz25DjgDhAavwAdlKUTUJe2eDJdu7++wHvVh/9xTqldgwQW2D4Ru4uLeDbGow==
-  dependencies:
-    prop-types "^15.5.8"
-    react-base16-styling "^0.5.1"
-
 "@rollup/plugin-commonjs@^11.0.0":
   version "11.0.1"
   resolved "https://registry.npmjs.org/@rollup/plugin-commonjs/-/plugin-commonjs-11.0.1.tgz#6056a6757286901cc6c1599123e6680a78cad6c2"
@@ -818,6 +810,14 @@ babel-plugin-dynamic-import-node@^2.3.0:
   integrity sha512-o6qFkpeQEBxcqt0XYlWzAVxNCSCZdUgcR8IRlhD/8DylxjjO4foPcvTW0GGKa/cVt3rvxZ7o5ippJ+/0nvLhlQ==
   dependencies:
     object.assign "^4.1.0"
+
+babel-runtime@^6.6.1:
+  version "6.26.0"
+  resolved "https://registry.npmjs.org/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -970,6 +970,11 @@ core-js-compat@^3.6.2:
   dependencies:
     browserslist "^4.8.3"
     semver "7.0.0"
+
+core-js@^2.4.0:
+  version "2.6.11"
+  resolved "https://registry.npmjs.org/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
+  integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
 
 debug@^4.1.0:
   version "4.1.1"
@@ -1350,10 +1355,29 @@ react-base16-styling@^0.5.1:
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
 
+"react-dom@npm:@reactesm/react-dom":
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/@reactesm/react-dom/-/react-dom-0.1.1.tgz#98874a0dc488843fe309857ca4e8761ad7b10c73"
+  integrity sha512-tZ2FyVbZiWCGRiPYASPkRk/HJRDwoVaKmuIWwHrxPtU1WL26aA3MR7RwvDqpQYkUWLztJrq3poPLx43IPL7JvQ==
+
 react-is@^16.8.1:
   version "16.12.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
+
+react-json-tree@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.npmjs.org/react-json-tree/-/react-json-tree-0.11.2.tgz#af70199fcbc265699ade2aec492465c51608f95e"
+  integrity sha512-aYhUPj1y5jR3ZQ+G3N7aL8FbTyO03iLwnVvvEikLcNFqNTyabdljo9xDftZndUBFyyyL0aK3qGO9+8EilILHUw==
+  dependencies:
+    babel-runtime "^6.6.1"
+    prop-types "^15.5.8"
+    react-base16-styling "^0.5.1"
+
+"react@npm:@reactesm/react":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@reactesm/react/-/react-0.1.0.tgz#64658bc6c060711d0faef7c1d1f41c28b5666dba"
+  integrity sha512-/2b9179xiryQ176R4EhAkC9xK2qQsw0YCoYS1BKIvXsnhAaPFbGMNJRe4jlwaCTX3DN7/ZTzPBiDLwB5h6/0qg==
 
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
@@ -1366,6 +1390,11 @@ regenerate@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-transform@^0.14.0:
   version "0.14.1"

@@ -1,11 +1,7 @@
-// Import your web-ready dependencies
-import { h, Component, render } from '/web_modules/preact.js'
-import htm from '/web_modules/htm.js'
+import ReactDOM from 'react-dom'
+import { html } from 'htm/react'
 
-const html = htm.bind(h)
-
-// Create your main app component
-function SomePreactComponent (props) {
+function Main (props) {
   return html`
     <h1>Lotus API Playground</h1>
     <ul>
@@ -14,5 +10,4 @@ function SomePreactComponent (props) {
   `
 }
 
-// Inject your application into the an element with the id `app`.
-render(html`<${SomePreactComponent} />`, document.getElementById('app'))
+ReactDOM.render(html`<${Main} />`, document.getElementById('app'))

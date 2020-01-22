@@ -3,6 +3,17 @@
   <head><title>Snowpack - Simple Example</title></head>
   <body>
     <div id="app"></div>
+    <script type="importmap">
+    {
+      "imports": {
+        "htm": "./web_modules/htm.js",
+        "htm/react": "./web_modules/htm/react.js",
+        "react": "./web_modules/react.js",
+        "react-dom": "./web_modules/react-dom.js",
+        "react-json-tree": "./web_modules/react-json-tree.js"
+      }
+    }
+    </script>
     <script type="module" src="app.js"></script>
   </body>
 </html>

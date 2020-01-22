@@ -13,7 +13,9 @@
   "dependencies": {
     "htm": "^2.2.1",
     "preact": "^10.2.1",
-    "@jimpick/preact-json-tree": "^0.11.2"
+    "react": "npm:@reactesm/react",
+    "react-dom": "npm:@reactesm/react-dom",
+    "react-json-tree": "^0.11.2"
   },
   "devDependencies": {
     "snowpack": "^1.0.5"
@@ -21,10 +23,10 @@
   "snowpack": {
     "webDependencies": [
       "htm",
-      "preact",
-      "preact/compat",
-      "preact/hooks",
-      "@jimpick/preact-json-tree/umd/react-json-tree.js"
+      "htm/react",
+      "react",
+      "react-dom",
+      "react-json-tree"
     ]
   }
 }
