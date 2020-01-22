@@ -4,8 +4,10 @@ import { html } from '/web_modules/htm/react.js'
 import ReactJson from '/web_modules/react-json-view.js'
 import Client from '/lib/client.js'
 
-function ChainHead (props) {
-  const [chainHead, setChainHead] = useState()
+function ChainGetBlock (props) {
+  const [block, setBlock] = useState()
+  const searchParams = (new URL(document.location)).searchParams
+  const cid = searchParams.get('cid')
 
   useEffect(() => {
     async function run () {
@@ -13,20 +15,24 @@ function ChainHead (props) {
         url: '/api/rpc/v0',
         token: localStorage.getItem('token')
       })
-      const json = await client.request('ChainHead')
-      setChainHead(json)
+      const params = {
+        '/': cid
+      }
+      const json = await client.request('ChainGetBlock', params)
+      setBlock(json)
     }
     run()
   }, [])
 
   return html`
-    <h1>Chain Head</h1>
+    <h1>Block</h1>
+    CID: ${cid}
     <nav>
       <a href="/">Top</a>
     </nav>
 
     <${ReactJson}
-      src=${chainHead}
+      src=${block}
       collapseStringsAfterLength=${70}
       displayDataTypes=${false}
       onSelect=${onSelect} />
@@ -36,19 +42,11 @@ function ChainHead (props) {
   function onSelect (select) {
     console.log('Select', select)
     const { namespace, value } = select
-    if (namespace.length === 2 && namespace[0] === 'Cids') {
+    if (namespace.length === 2 && namespace[0] === 'Parents') {
       console.log('Block CID', value)
-      location.href = '/chain-get-block/?cid=' + value
-    }
-    if (
-      namespace.length === 4 &&
-      namespace[0] === 'Blocks' &&
-      namespace[2] === 'Parents'
-    ) {
-      console.log('Parent Block CID', value)
       location.href = '/chain-get-block/?cid=' + value
     }
   }
 }
 
-ReactDOM.render(html`<${ChainHead} />`, document.getElementById('app'))
+ReactDOM.render(html`<${ChainGetBlock} />`, document.getElementById('app'))
