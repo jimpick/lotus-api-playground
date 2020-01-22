@@ -1,12 +1,13 @@
-import { h, Component, render } from '/web_modules/preact.js'
-import { useEffect, useState } from '/web_modules/preact/hooks.js'
-import htm from '/web_modules/htm.js'
-import JSONTree from '/web_modules/@jimpick/preact-json-tree/umd/react-json-tree.js'
+import { useEffect, useState } from '/web_modules/react.js'
+import ReactDOM from '/web_modules/react-dom.js'
+import { html } from '/web_modules/htm/react.js'
+import ReactJson from '/web_modules/react-json-view.js'
 import Client from '/lib/client.js'
 
-const html = htm.bind(h)
+function JSONTree2 (props) {
+  return html`<pre>Props: ${props.data.a}</pre>`
+}
 
-// Create your main app component
 function ChainHead (props) {
   const [chainHead, setChainHead] = useState()
 
@@ -17,17 +18,19 @@ function ChainHead (props) {
         token: localStorage.getItem('token')
       })
       const json = await client.request('ChainHead')
-      setChainHead(JSON.stringify(json, null, 2))
+      setChainHead(json)
     }
     run()
   }, [])
 
   return html`
     <h1>Chain Head</h1>
-    <pre>${chainHead}</pre>
-    <JSONTree data=${chainHead} />
+    <nav>
+      <a href="/">Top</a>
+    </nav>
+
+    <${ReactJson} src=${chainHead} />
   `
 }
 
-// Inject your application into the an element with the id `app`.
-render(html`<${ChainHead} />`, document.getElementById('app'))
+ReactDOM.render(html`<${ChainHead} />`, document.getElementById('app'))
