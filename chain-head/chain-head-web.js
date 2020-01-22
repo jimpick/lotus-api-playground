@@ -29,8 +29,17 @@ function ChainHead (props) {
       <a href="/">Top</a>
     </nav>
 
-    <${ReactJson} src=${chainHead} />
+    <${ReactJson}
+      src=${chainHead}
+      collapseStringsAfterLength=${50}
+      displayDataTypes=${false}
+      onSelect=${onSelect} />
+
   `
+
+  function onSelect (select) {
+    console.log('Select', select)
+  }
 }
 
 ReactDOM.render(html`<${ChainHead} />`, document.getElementById('app'))
