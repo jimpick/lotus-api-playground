@@ -5,17 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "devd . /api/=http://localhost:11234",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "snowpack"
   },
   "keywords": [],
   "author": "Jim Pick (@jimpick)",
   "license": "MIT",
   "dependencies": {
-    "@openworklabs/lotus-jsonrpc-engine": "^0.0.5",
     "htm": "^2.2.1",
-    "jayson": "^3.2.0",
-    "jsonrpc-lite": "^2.1.0",
-    "preact": "^10.2.1"
+    "preact": "^10.2.1",
+    "@jimpick/preact-json-tree": "^0.11.2"
   },
   "devDependencies": {
     "snowpack": "^1.0.5"
@@ -24,7 +22,9 @@
     "webDependencies": [
       "htm",
       "preact",
-      "preact/hooks"
+      "preact/compat",
+      "preact/hooks",
+      "@jimpick/preact-json-tree/umd/react-json-tree.js"
     ]
   }
 }
