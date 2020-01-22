@@ -35,7 +35,7 @@ function ChainHead (props) {
 
   function onSelect (select) {
     console.log('Select', select)
-    const { namespace, value } = select
+    const { namespace, name, value } = select
     if (namespace.length === 2 && namespace[0] === 'Cids') {
       console.log('Block CID', value)
       location.href = '/chain-get-block/?cid=' + value
@@ -47,6 +47,10 @@ function ChainHead (props) {
     ) {
       console.log('Parent Block CID', value)
       location.href = '/chain-get-block/?cid=' + value
+    }
+    if (name === 'Miner') {
+      console.log('Miner', value)
+      location.href = '/state-get-actor/?actor=' + value
     }
   }
 }
