@@ -1,0 +1,6 @@
+:8000
+
+file_server
+
+reverse_proxy /api/* localhost:11234
+strip_prefix /api/* /api

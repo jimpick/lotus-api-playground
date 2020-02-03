@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "devd . /api/=http://localhost:11234",
+    "dev": "caddy2 run",
     "prepare": "snowpack"
   },
   "keywords": [],

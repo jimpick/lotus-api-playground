@@ -6,6 +6,7 @@ function Main (props) {
     <h1>Lotus API Playground</h1>
     <ul>
       <li><a href="/chain-head/">Chain Head</a></li>
+      <li><a href="/chain-notify/">Chain Notify</a></li>
     </ul>
   `
 }
