@@ -45,27 +45,6 @@ function ChainNotify (props) {
     </nav>
     Height: ${height}
   `
-
-  function onSelect (select) {
-    console.log('Select', select)
-    const { namespace, name, value } = select
-    if (namespace.length === 2 && namespace[0] === 'Cids') {
-      console.log('Block CID', value)
-      location.href = '/chain-get-block/?cid=' + value
-    }
-    if (
-      namespace.length === 4 &&
-      namespace[0] === 'Blocks' &&
-      namespace[2] === 'Parents'
-    ) {
-      console.log('Parent Block CID', value)
-      location.href = '/chain-get-block/?cid=' + value
-    }
-    if (name === 'Miner') {
-      console.log('Miner', value)
-      location.href = '/state-get-actor/?actor=' + value
-    }
-  }
 }
 
 ReactDOM.render(html`<${ChainNotify} />`, document.getElementById('app'))
