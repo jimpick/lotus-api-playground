@@ -7,6 +7,7 @@ function Main (props) {
     <ul>
       <li><a href="/chain-head/">Chain Head</a></li>
       <li><a href="/chain-notify/">Chain Notify</a></li>
+      <li><a href="/chain-notify-it/">Chain Notify (using async iterator)</a></li>
     </ul>
   `
 }
