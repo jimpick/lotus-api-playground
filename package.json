@@ -11,20 +11,23 @@
   "author": "Jim Pick (@jimpick)",
   "license": "MIT",
   "dependencies": {
-    "htm": "^2.2.1",
-    "preact": "^10.2.1",
+    "htm": "^3.0.3",
+    "it-pipe": "^1.1.0",
+    "it-pushable": "^1.4.0",
+    "preact": "^10.3.0",
     "react": "npm:@reactesm/react",
     "react-dom": "npm:@reactesm/react-dom",
-    "react-json-tree": "^0.11.2",
     "react-json-view": "^1.19.1"
   },
   "devDependencies": {
-    "snowpack": "^1.0.5"
+    "snowpack": "^1.1.4"
   },
   "snowpack": {
     "webDependencies": [
       "htm",
       "htm/react",
+      "it-pipe",
+      "it-pushable",
       "react",
       "react-dom",
       "react-json-view"
