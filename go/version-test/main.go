@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/filecoin-project/lotus/api-wasm/client"
+	"github.com/filecoin-project/lotus/api/client"
 	"github.com/multiformats/go-multiaddr"
 	manet "github.com/multiformats/go-multiaddr-net"
 )
