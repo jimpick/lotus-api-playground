@@ -1,2 +1,3 @@
-main.wasm: main.go
+.PHONY: main.wasm
+main.wasm:
 	GOOS=js GOARCH=wasm go build -o main.wasm
