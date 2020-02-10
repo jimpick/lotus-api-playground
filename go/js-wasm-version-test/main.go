@@ -17,7 +17,10 @@ func main() {
 	headers := http.Header{}
 	headers.Add("Authorization", "Bearer "+token)
 
-	addr := "ws://localhost:8000/api/rpc/v0"
+	js.Global().Get("ws").Call("start")
+
+	// addr := "ws://localhost:8000/api/rpc/v0"
+	addr := "not used"
 	api, closer, err := client.NewFullNodeRPC(addr, headers)
 	if err != nil {
 		panic(err)
