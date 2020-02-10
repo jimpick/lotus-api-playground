@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"syscall/js"
 
-	"github.com/filecoin-project/lotus/api/apistruct"
+	"github.com/filecoin-project/lotus/api-wasm/apistruct"
 )
 
 type Foo struct {
@@ -36,8 +36,9 @@ func main() {
 		fmt.Printf("%v (%v)\n", f.Name, f.Type.Name())
 	}
 	var res apistruct.FullNodeStruct
-	resType := reflect.TypeOf(res)
+	resType := reflect.TypeOf(res.Internal)
 	fmt.Println("Type", resType.Name())
 	fmt.Println("Kind", resType.Kind())
+	fmt.Println("NumField", resType.NumField())
 	select {}
 }
