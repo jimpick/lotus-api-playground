@@ -9,6 +9,7 @@ function Main (props) {
       <li><a href="/chain-notify/">Chain Notify</a></li>
       <li><a href="/chain-notify-it/">Chain Notify (using async iterator)</a></li>
       <li><a href="/go/js-wasm-version-test/">WASM Version</a></li>
+      <li><a href="/demo-upload/">Demo: Upload</a></li>
     </ul>
   `
 }
