@@ -1,10 +1,12 @@
-import { useEffect, useState } from '/web_modules/react.js'
+import { useEffect, useState, useRef } from '/web_modules/react.js'
 import ReactDOM from '/web_modules/react-dom.js'
 import { html } from '/web_modules/htm/react.js'
 import Client from '/lib/client-it.js'
 
 function UploadDemo (props) {
   const [height, setHeight] = useState()
+  const [file, setFile] = useState()
+  const fileInput = useRef(null)
 
   useEffect(() => {
     async function run () {
@@ -26,12 +28,39 @@ function UploadDemo (props) {
     run()
   }, [])
 
+  function handleFileChange (event) {
+    event.preventDefault()
+    console.log(
+      `Selected file - ${
+        fileInput.current.files[0].name
+      }`, fileInput
+    )
+    setFile(fileInput.current.files[0])
+  }
+
+  let info
+  if (file) {
+    info = html`
+      <div>
+        File: ${file.name}<br />
+        Size: ${file.size}<br />
+        Type: ${file.type}
+      </div>
+    `
+  }
   return html`
     <h1>Upload Demo</h1>
     <nav>
       <a href="/">Top</a>
     </nav>
-    Height: ${height}
+    <div>
+      Height: ${height}
+    </div>
+    <label>
+      Upload file:
+      <input type="file" ref=${fileInput} onChange=${handleFileChange} />
+    </label>
+    ${info}
   `
 }
 
