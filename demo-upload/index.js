@@ -3,6 +3,7 @@ import ReactDOM from '/web_modules/react-dom.js'
 import { html } from '/web_modules/htm/react.js'
 import ChainHeight from './chainHeight.js'
 import FilePicker from './filePicker.js'
+import Importer from './importer.js'
 
 function UploadDemo (props) {
   const [file, setFile] = useState()
@@ -14,6 +15,7 @@ function UploadDemo (props) {
     </nav>
     <${ChainHeight} />
     <${FilePicker} onFile=${setFile} />
+    ${file && html`<${Importer} file=${file} />`}
   `
 }
 

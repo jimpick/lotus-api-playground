@@ -3,4 +3,5 @@
 file_server
 
 reverse_proxy /api/* localhost:11234
+#reverse_proxy /api/* localhost:8080
 strip_prefix /api/* /api
