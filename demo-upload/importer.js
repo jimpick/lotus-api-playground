@@ -37,6 +37,14 @@ export default function Importer (props) {
     // FIXME: Check return code, errors
     const result = await response.json()
     console.log('Import result', result)
-    setCid(result.Cid['/'])
+    const cid = result.Cid['/']
+    setCid(cid)
+    const record = {
+      importedAt: (new Date()).toISOString(),
+      name: file.name,
+      type: file.type,
+      size: file.size
+    }
+    localStorage.setItem(`cid:${cid}`, JSON.stringify(record))
   }
 }
