@@ -5,9 +5,14 @@ import ChainHeight from './chainHeight.js'
 import CidList from './cidList.js'
 import FilePicker from './filePicker.js'
 import Importer from './importer.js'
+import useImportedCids from './useImportedCids.js'
+import useMiners from './useMiners.js'
+import MinerList from './minerList.js'
 
 function UploadDemo (props) {
   const [file, setFile] = useState()
+  const cids = useImportedCids()
+  const miners = useMiners()
 
   const getCidFromHash = () => {
     return document.location.hash.replace(/^#/, '')
@@ -22,12 +27,30 @@ function UploadDemo (props) {
   let view
   if (!cid) {
     view = html`
-      <${CidList} />
+      <${CidList} cids=${cids} />
       <${FilePicker} onFile=${setFile} />
       ${file && html`<${Importer} file=${file} />`}
     `
   } else {
-    view = html`<div>CID: ${cid}</div>`
+    const record = cids.find(({ cid: recordCid }) => cid === recordCid)
+    if (!record) {
+      view = html`<div>Not Found</div>`
+    } else {
+      const { importedAt, name, type, size } = record
+      view = html`
+        <div>
+          <ul>
+            <li>CID: ${cid}</li>
+            <li>Name: ${name}</li>
+            <li>Type: ${type}</li>
+            <li>Size: ${size}</li>
+            <li>Imported At: ${importedAt}</li>
+          </ul>
+          <div>Miners:</div>
+          <${MinerList} miners=${miners} />
+        </div>
+      `
+    }
   }
   return html`
     <h1>Upload Demo</h1>
