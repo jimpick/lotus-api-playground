@@ -21,7 +21,7 @@ export default function useImportedCids () {
       }
     }
     const sortedCids = cids.sort(({ importedAt: a }, { importedAt: b }) => {
-      return (new Date(b)) - (new Date(a))
+      return new Date(b) - new Date(a)
     })
     setCids(sortedCids)
   }, [])

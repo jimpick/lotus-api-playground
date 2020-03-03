@@ -29,8 +29,8 @@ function ChainHead (props) {
       src=${chainHead}
       collapseStringsAfterLength=${70}
       displayDataTypes=${false}
-      onSelect=${onSelect} />
-
+      onSelect=${onSelect}
+    />
   `
 
   function onSelect (select) {
@@ -55,4 +55,9 @@ function ChainHead (props) {
   }
 }
 
-ReactDOM.render(html`<${ChainHead} />`, document.getElementById('app'))
+ReactDOM.render(
+  html`
+    <${ChainHead} />
+  `,
+  document.getElementById('app')
+)

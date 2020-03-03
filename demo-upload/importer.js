@@ -13,8 +13,14 @@ export default function Importer (props) {
 
   return html`
     <div class="importer">
-      ${!cid && html`<button onClick=${doImport}>Import</button>`}
-      ${cid && html`CID: ${cid}`}
+      ${!cid &&
+        html`
+          <button onClick=${doImport}>Import</button>
+        `}
+      ${cid &&
+        html`
+          CID: ${cid}
+        `}
     </div>
   `
 
@@ -26,21 +32,18 @@ export default function Importer (props) {
       Accept: '*/*',
       Authorization: `Bearer ${token}`
     }
-    const response = await fetch(
-      '/api/rest/v0/import',
-      {
-        method: 'PUT',
-        headers,
-        body: file
-      }
-    )
+    const response = await fetch('/api/rest/v0/import', {
+      method: 'PUT',
+      headers,
+      body: file
+    })
     // FIXME: Check return code, errors
     const result = await response.json()
     console.log('Import result', result)
     const cid = result.Cid['/']
     setCid(cid)
     const record = {
-      importedAt: (new Date()).toISOString(),
+      importedAt: new Date().toISOString(),
       name: file.name,
       type: file.type,
       size: file.size

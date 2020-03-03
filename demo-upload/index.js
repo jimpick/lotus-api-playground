@@ -29,12 +29,17 @@ function UploadDemo (props) {
     view = html`
       <${CidList} cids=${cids} />
       <${FilePicker} onFile=${setFile} />
-      ${file && html`<${Importer} file=${file} />`}
+      ${file &&
+        html`
+          <${Importer} file=${file} />
+        `}
     `
   } else {
     const record = cids.find(({ cid: recordCid }) => cid === recordCid)
     if (!record) {
-      view = html`<div>Not Found</div>`
+      view = html`
+        <div>Not Found</div>
+      `
     } else {
       const { importedAt, name, type, size } = record
       view = html`
@@ -55,11 +60,19 @@ function UploadDemo (props) {
   return html`
     <h1>Upload Demo</h1>
     <nav>
-      <a href="/">Top</a> ${cid && html`<a href="#">All Uploads</a>`}
+      <a href="/">Top</a> ${cid &&
+        html`
+          <a href="#">All Uploads</a>
+        `}
     </nav>
     <${ChainHeight} />
     ${view}
   `
 }
 
-ReactDOM.render(html`<${UploadDemo} />`, document.getElementById('app'))
+ReactDOM.render(
+  html`
+    <${UploadDemo} />
+  `,
+  document.getElementById('app')
+)

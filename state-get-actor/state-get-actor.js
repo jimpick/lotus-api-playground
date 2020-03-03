@@ -6,7 +6,7 @@ import Client from '/lib/client.js'
 
 function StateGetActor (props) {
   const [actor, setActor] = useState()
-  const searchParams = (new URL(document.location)).searchParams
+  const searchParams = new URL(document.location).searchParams
   const actorAddress = searchParams.get('actor')
 
   useEffect(() => {
@@ -31,8 +31,8 @@ function StateGetActor (props) {
       src=${actor}
       collapseStringsAfterLength=${70}
       displayDataTypes=${false}
-      onSelect=${onSelect} />
-
+      onSelect=${onSelect}
+    />
   `
 
   function onSelect (select) {
@@ -47,4 +47,9 @@ function StateGetActor (props) {
   }
 }
 
-ReactDOM.render(html`<${StateGetActor} />`, document.getElementById('app'))
+ReactDOM.render(
+  html`
+    <${StateGetActor} />
+  `,
+  document.getElementById('app')
+)

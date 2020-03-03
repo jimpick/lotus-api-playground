@@ -6,7 +6,7 @@ import Client from '/lib/client.js'
 
 function ChainGetBlock (props) {
   const [block, setBlock] = useState()
-  const searchParams = (new URL(document.location)).searchParams
+  const searchParams = new URL(document.location).searchParams
   const cid = searchParams.get('cid')
 
   useEffect(() => {
@@ -35,8 +35,8 @@ function ChainGetBlock (props) {
       src=${block}
       collapseStringsAfterLength=${70}
       displayDataTypes=${false}
-      onSelect=${onSelect} />
-
+      onSelect=${onSelect}
+    />
   `
 
   function onSelect (select) {
@@ -53,4 +53,9 @@ function ChainGetBlock (props) {
   }
 }
 
-ReactDOM.render(html`<${ChainGetBlock} />`, document.getElementById('app'))
+ReactDOM.render(
+  html`
+    <${ChainGetBlock} />
+  `,
+  document.getElementById('app')
+)
