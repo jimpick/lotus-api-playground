@@ -5,7 +5,7 @@ export default function Importer (props) {
   const [file, setFile] = useState()
   const [cid, setCid] = useState()
 
-  if (file != props.file) {
+  if (file !== props.file) {
     console.log('New file', props.file.name)
     setFile(props.file)
     setCid(null)

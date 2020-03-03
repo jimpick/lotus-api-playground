@@ -9,9 +9,9 @@ function ChainNotify (props) {
     async function run () {
       const ws = new WebSocket(`ws://${location.host}/api/rpc/v0`)
       const request = {
-        jsonrpc: "2.0",
+        jsonrpc: '2.0',
         id: 1,
-        method: "Filecoin.ChainNotify",
+        method: 'Filecoin.ChainNotify',
         params: []
       }
       ws.onopen = function (event) {
@@ -23,7 +23,7 @@ function ChainNotify (props) {
           if (method === 'xrpc.ch.val') {
             const changes = params[1]
             for (const change of changes) {
-              const { Type: changeType, Val: { Height: height }} = change
+              const { Type: changeType, Val: { Height: height } } = change
               console.log(`Time: ${new Date()} Type: ${changeType} Height: ${height}`)
               if (changeType === 'current' || changeType === 'apply') {
                 setHeight(height)

@@ -14,7 +14,7 @@ export default function ChainHeight (props) {
       const source = client.chainNotify(setHeight)
       for await (const changes of source) {
         for (const change of changes) {
-          const { Type: changeType, Val: { Height: height }} = change
+          const { Type: changeType, Val: { Height: height } } = change
           console.log(`Time: ${new Date()} Type: ${changeType} Height: ${height}`)
           if (changeType === 'current' || changeType === 'apply') {
             setHeight(height)

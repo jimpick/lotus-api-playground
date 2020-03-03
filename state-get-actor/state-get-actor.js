@@ -37,8 +37,8 @@ function StateGetActor (props) {
 
   function onSelect (select) {
     console.log('Select', select)
-    const { namespace, value } = select
     /*
+    const { namespace, value } = select
     if (namespace.length === 2 && namespace[0] === 'Parents') {
       console.log('Block CID', value)
       location.href = '/chain-get-block/?cid=' + value
