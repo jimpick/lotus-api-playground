@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "caddy2 run",
+    "nginx": "nginx -s stop; nginx -c nginx.conf -p `pwd`",
     "prepare": "snowpack",
     "lint": "standardx",
     "test:node": "hundreds mocha",
@@ -17,6 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "htm": "^3.0.3",
+    "http-proxy": "^1.18.0",
     "it-pipe": "^1.1.0",
     "it-pushable": "^1.4.0",
     "preact": "^10.3.0",

@@ -9,7 +9,7 @@ describe('Version', function () {
     it('should return a string', async function () {
       this.timeout(0)
       const client = new Client({
-        url: 'http://127.0.0.1:8000/api/rpc/v0',
+        url: 'http://127.0.0.1:8001/rpc/v0',
         token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid3JpdGUiLCJzaWduIiwiYWRtaW4iXX0.xAJpb1mdraYPKme5H1w1RUhjcQ7uvd8BcYvU5M0h_vI'
       })
       const json = await client.request('ChainHead')
