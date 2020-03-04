@@ -3,3 +3,4 @@ web_modules
 *.swp
 package-lock.json
 yarn-error.log
+.nyc_output

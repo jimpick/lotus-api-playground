@@ -7,8 +7,8 @@
     "dev": "caddy2 run",
     "prepare": "snowpack",
     "lint": "standardx",
-    "test:node": "hundreds mocha tests/test-*.js",
-    "test:browser": "polendina --cleanup tests/test-*.js",
+    "test:node": "hundreds mocha",
+    "test:browser": "polendina --cleanup test/test-*.js",
     "test": "npm run lint && npm run test:node && npm run test:browser"
   },
   "keywords": [],
@@ -24,6 +24,7 @@
     "react-json-view": "^1.19.1"
   },
   "devDependencies": {
+    "hundreds": "^0.0.2",
     "mocha": "^7.1.0",
     "polendina": "^1.0.0",
     "snowpack": "^1.1.4",
@@ -40,9 +41,13 @@
       "react-json-view"
     ]
   },
-  "standardx":{
+  "standardx": {
     "ignore": [
       "/go"
+    ],
+    "globals": [
+      "describe",
+      "it"
     ]
   },
   "eslintConfig": {
