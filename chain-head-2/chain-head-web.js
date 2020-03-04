@@ -10,7 +10,7 @@ function ChainHead (props) {
   useEffect(() => {
     async function run () {
       const client = new Client({
-        url: 'http://127.0.0.1:8001/api/rpc/v0',
+        url: 'http://127.0.0.1:8000/api/rpc/v0',
         token: localStorage.getItem('token')
       })
       const json = await client.request('ChainHead')

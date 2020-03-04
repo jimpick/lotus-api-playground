@@ -4,3 +4,4 @@ web_modules
 package-lock.json
 yarn-error.log
 .nyc_output
+build

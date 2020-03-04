@@ -2,6 +2,7 @@
   "name": "lotus-api-playground",
   "version": "1.0.0",
   "description": "Just playing around with Lotus",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "caddy2 run",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "hundreds": "^0.0.2",
+    "isomorphic-fetch": "^2.2.1",
     "mocha": "^7.1.0",
     "polendina": "^1.0.0",
     "snowpack": "^1.1.4",
@@ -58,5 +60,8 @@
       "browser": true,
       "node": true
     }
+  },
+  "mocha": {
+    "timeout": 500000
   }
 }
