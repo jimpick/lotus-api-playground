@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "caddy2 run",
-    "nginx": "nginx -s stop; nginx -c nginx.conf -p `pwd`",
+    "nginx": "nginx -c nginx.conf -p `pwd`",
     "prepare": "snowpack",
     "lint": "standardx",
     "test:node": "hundreds mocha",
