@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "caddy2 run",
     "nginx": "nginx -c nginx.conf -p `pwd`",
-    "prepare": "snowpack",
+    "prepareX": "snowpack",
     "lint": "standardx",
     "test:node": "hundreds mocha",
     "test:browser": "polendina --cleanup test/test-*.js",
