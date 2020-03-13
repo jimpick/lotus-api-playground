@@ -9,7 +9,7 @@ function ChainNotify (props) {
   useEffect(() => {
     async function run () {
       const client = new Client({
-        url: 'ws://127.0.0.1:8001/rpc/v0',
+        url: `ws://${document.location.hostname}:11234/rpc/v0`,
         token: localStorage.getItem('token')
       })
       const source = client.chainNotify(setHeight)
