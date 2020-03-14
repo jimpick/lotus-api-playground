@@ -1,5 +1,4 @@
 import { useEffect, useState } from '/web_modules/react.js'
-import ReactDOM from '/web_modules/react-dom.js'
 import { html } from '/web_modules/htm/react.js'
 import Client from '/lib/client-it.js'
 
