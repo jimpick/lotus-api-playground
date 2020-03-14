@@ -1,7 +1,39 @@
-:8000
+lotus.testground.ipfs.team
+
+log
 
 file_server
 
-reverse_proxy /api/* localhost:11234
-#reverse_proxy /api/* localhost:8080
-strip_prefix /api/* /api
+@api_node_0 {
+    path_regexp api ^/api/0/node/(.*)$
+}
+
+route @api_node_0 {
+  strip_prefix /api/0/node/* /api/0/node
+  reverse_proxy localhost:11234
+}
+
+@api_miner_0 {
+    path_regexp api ^/api/0/miner/(.*)$
+}
+
+route @api_miner_0 {
+  strip_prefix /api/0/miner/* /api/0/miner
+  reverse_proxy localhost:12345
+}
+
+#reverse_proxy /api/0/miner/* localhost:12345
+#strip_prefix /api/0/miner/* /api/0/miner
+
+#reverse_proxy /api/1/node/* localhost:11235
+#strip_prefix /api/1/node/* /api/1/node
+#reverse_proxy /api/1/miner/* localhost:12346
+#strip_prefix /api/1/miner/* /api/1/miner
+
+#reverse_proxy /api/2/node/* localhost:11236
+#strip_prefix /api/2/node/* /api/2/node
+#reverse_proxy /api/2/miner/* localhost:12347
+#strip_prefix /api/2/miner/* /api/2/miner
+
+
+
