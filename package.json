@@ -21,7 +21,6 @@
     "http-proxy": "^1.18.0",
     "it-pipe": "^1.1.0",
     "it-pushable": "^1.4.0",
-    "preact": "^10.3.0",
     "react": "npm:@reactesm/react",
     "react-dom": "npm:@reactesm/react-dom",
     "react-json-view": "^1.19.1",
@@ -33,7 +32,7 @@
     "isomorphic-fetch": "^2.2.1",
     "mocha": "^7.1.0",
     "polendina": "^1.0.0",
-    "snowpack": "^1.1.4",
+    "snowpack": "^1.6.0",
     "standardx": "^5.0.0"
   },
   "snowpack": {
