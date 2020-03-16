@@ -3,12 +3,12 @@ import { html } from '/web_modules/htm/react.js'
 import ChainNotify from './chain-notify.js'
 import MinerAddress from './miner-address.js'
 
-function LocalNet (props) {
+export default function LocalNet (props) {
   return html`
-    <h1>Local Net Chain Notify (using async iterator)</h1>
-    <nav>
-      <a href="/">Top</a>
-    </nav>
+    <h1>Local Net Lotus Websocket Demo</h1>
+    <p>
+      Connected to Jim's development Kubernetes Lotus local net instance. May disappear at any time.
+    </p>
     <${ChainNotify} node="0" />
     <${MinerAddress} node="0" />
     <${ChainNotify} node="1" />
