@@ -13,6 +13,9 @@ function Main (props) {
       <li>
         <a href="/chain-notify-it-3/">Local Net Chain Notify (using async iterator)</a>
       </li>
+      <li>
+        <a href="/ws-prototype/">Websocket Prototype</a>
+      </li>
       <li><a href="/go/js-wasm-version-test/">WASM Version</a></li>
       <li><a href="/demo-upload/">Demo: Upload</a></li>
     </ul>

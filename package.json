@@ -22,8 +22,8 @@
     "http-proxy": "^1.18.0",
     "it-pipe": "^1.1.0",
     "it-pushable": "^1.4.0",
-    "react": "npm:@reactesm/react",
-    "react-dom": "npm:@reactesm/react-dom",
+    "react": "npm:@pika/react",
+    "react-dom": "npm:@pika/react-dom",
     "react-json-view": "^1.19.1",
     "ws": "^7.2.3",
     "wscat": "^4.0.0"
