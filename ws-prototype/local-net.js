@@ -2,6 +2,7 @@ import ReactDOM from '/web_modules/react-dom.js'
 import { html } from '/web_modules/htm/react.js'
 import ChainNotify from './chain-notify.js'
 import MinerAddress from './miner-address.js'
+import Version from './version.js'
 
 function LocalNet (props) {
   return html`
@@ -11,6 +12,7 @@ function LocalNet (props) {
     </nav>
     <${ChainNotify} node="0" />
     <${MinerAddress} node="0" />
+    <${Version} node="0" />
   `
 }
 
