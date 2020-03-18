@@ -1,4 +1,4 @@
-export const methods = {
+const methods = {
   Version: {},
   ChainNotify: {
     subscription: true
@@ -279,3 +279,9 @@ var SectorStates = []string{
 	FaultedFinal:  "FaultedFinal",
 }
 */
+
+const schema = {
+  methods
+}
+
+export default schema

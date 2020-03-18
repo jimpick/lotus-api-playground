@@ -11,10 +11,6 @@ function LocalNet (props) {
     </nav>
     <${ChainNotify} node="0" />
     <${MinerAddress} node="0" />
-    <${ChainNotify} node="1" />
-    <${MinerAddress} node="1" />
-    <${ChainNotify} node="2" />
-    <${MinerAddress} node="2" />
   `
 }
 
