@@ -7,14 +7,24 @@ import Version from './version.js'
 
 function LocalNet (props) {
   const miner0 = useLotusClient(0, 'miner')
+  const miner1 = useLotusClient(1, 'miner')
+  const miner2 = useLotusClient(2, 'miner')
+
+  const miners = [miner0, miner1, miner2]
   return html`
     <h1>Websocket Prototype</h1>
     <nav>
       <a href="/">Top</a>
     </nav>
-    <${ChainNotify} node="0" />
-    <${MinerAddress} client=${miner0} />
-    <${Version} client=${miner0} />
+    <div style=${{display: 'grid', gridTemplateRows: `repeat(${miners.length}, auto)`}}>
+      ${miners.map((miner, i) => html`
+        <div style=${{gridColumn: i + 1}}>
+          <${MinerAddress} client=${miner} />
+          <${ChainNotify} node=${i} />
+          <${Version} client=${miner} />
+        </div>
+      `)}
+    </div>
   `
 }
 

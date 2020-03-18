@@ -14,9 +14,12 @@ export default function Version ({ client }) {
     }
   }, [client])
 
+  if (!version) return html`<div>Loading...</div>`
   return html`
     <div>
-      Version: ${JSON.stringify(version)}
+      Version: ${version.Version}<br />
+      API Version: ${version.APIVersion}<br />
+      Block Delay: ${version.BlockDelay}
     </div>
   `
 }

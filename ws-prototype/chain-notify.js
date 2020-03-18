@@ -19,9 +19,11 @@ export default function ChainNotify (props) {
             Type: changeType,
             Val: { Height: height }
           } = change
+          /*
           console.log(
             `Time: ${new Date()} Type: ${changeType} Height: ${height}`
           )
+          */
           if (changeType === 'current' || changeType === 'apply') {
             setHeight(height)
           }
@@ -33,7 +35,7 @@ export default function ChainNotify (props) {
 
   return html`
     <div>
-      Node: ${node} Height: ${height}
+      Height: ${height}
     </div>
   `
 }
