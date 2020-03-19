@@ -3,12 +3,37 @@ import { html } from '/web_modules/htm/react.js'
 import ChainNotify from './chain-notify.js'
 import Version from './version.js'
 
+const sectorStates = {
+  0: 'UndefinedSectorState',
+	1: 'Empty',
+  2: 'Packing',
+  3: 'Unsealed',
+  4: 'PreCommitting',
+  5: 'WaitSeed',
+	6: 'Committing',
+  7: 'CommitWait',
+	8: 'FinalizeSector',
+	9: 'Proving',
+	20: 'FailedUnrecoverable',
+	21: 'SealFailed',
+	22: 'PreCommitFailed',
+	23: 'SealCommitFailed',
+	24: 'CommitFailed',
+	25: 'PackingFailed',
+  29: 'Faulty',
+  30: 'FaultReported',
+  31: 'FaultedFinal'
+}
+
 export default function MinerAddress ({ node, miner }) {
   const [address, setAddress] = useState()
   const [sectorSize, setSectorSize] = useState()
   const [minerPower, setMinerPower] = useState()
   const [sectorCount, setSectorCount] = useState()
   const [faults, setFaults] = useState()
+  const [postState, setPostState] = useState()
+  const [sectors, setSectors] = useState([])
+  const [refresh, setRefresh] = useState([])
 
   useEffect(() => {
     async function run () {
@@ -16,15 +41,35 @@ export default function MinerAddress ({ node, miner }) {
       setAddress(address)
       const sectorSize = await node.stateMinerSectorSize(address, [])
       setSectorSize(sectorSize)
+    }
+    run()
+  }, [node, miner])
+
+  useEffect(() => {
+    if (!address) return
+    async function run () {
+      console.log('Refresh')
       const minerPower = await node.stateMinerPower(address, [])
       setMinerPower(minerPower)
       const sectorCount = await node.stateMinerSectorCount(address, [])
       setSectorCount(sectorCount)
       const faults = await node.stateMinerFaults(address, [])
       setFaults(faults)
+      const postState = await node.stateMinerPostState(address, [])
+      setPostState(postState)
+      const sectorsList = await miner.sectorsList()
+      const sectors = []
+      for (let sectorNum of sectorsList) {
+        const status = await miner.sectorsStatus(sectorNum)
+        const state = sectorStates[status.State] !== undefined ?
+          sectorStates[status.State] : status.State
+        sectors.push({ sectorNum, state })
+      }
+      setSectors(sectors)
+      setTimeout(() => setRefresh(Date.now()), 5000)
     }
     run()
-  }, [miner])
+  }, [address, node, miner, refresh])
 
   return html`
     <div>
@@ -46,8 +91,28 @@ export default function MinerAddress ({ node, miner }) {
           <li>Faults: ${faults && faults.length}</li>
         </ul>
       </div>
+      <div>
+        Post State: <br />
+        <ul style=${{margin: '0 0'}}>
+          <li>Proving Period Start: ${postState && postState.ProvingPeriodStart}</li>
+          <li>Consecutive Failures: ${postState && postState.NumConsecutiveFailures}</li>
+        </ul>
+      </div>
+      <div>
+        Sectors: <br />
+        <ul style=${{margin: '0 0'}}>
+          ${sectors.map(sector => html`
+            <li>${sector.sectorNum}: ${sector.state}</li>
+          `)}
+        </ul>
+        <button onClick=${pledge}>Pledge</button>
+      </div>
       <br />
       <${Version} client=${miner} />
     </div>
   `
+
+  function pledge (event) {
+    alert('not implemented yet')
+  }
 }

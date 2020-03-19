@@ -239,6 +239,52 @@ type TipSet struct {
 */
 
 /*
+
+const (
+	UndefinedSectorState SectorState = iota  0
+
+	// happy path
+	Empty 1
+	Packing 2 // sector not in sealStore, and not on chain
+
+	Unsealed 3      // sealing / queued
+	PreCommitting 4 // on chain pre-commit
+	WaitSeed 5      // waiting for seed
+	Committing 6
+	CommitWait 7 // waiting for message to land on chain
+	FinalizeSector 8
+	Proving 9
+	_ 10 // reserved
+	_ 11
+	_ 12
+
+	// recovery handling
+	// Reseal
+	_ 13
+	_ 14
+	_ 15
+	_ 16
+	_ 17
+	_ 18
+	_ 19
+
+	// error modes
+	FailedUnrecoverable 20
+
+	SealFailed 21
+	PreCommitFailed 22
+	SealCommitFailed 23
+	CommitFailed 24
+	PackingFailed 25
+	_ 26
+	_ 27
+	_ 28
+
+	Faulty 29        // sector is corrupted or gone for some reason
+	FaultReported 30 // sector has been declared as a fault on chain
+	FaultedFinal 31  // fault declared on chain
+)
+
 type SectorInfo struct {
 	SectorID abi.SectorNumber
 	State    SectorState
