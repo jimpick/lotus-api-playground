@@ -1,9 +1,7 @@
 import ReactDOM from '/web_modules/react-dom.js'
 import { html } from '/web_modules/htm/react.js'
 import useLotusClient from './use-lotus-client.js'
-import ChainNotify from './chain-notify.js'
-import MinerAddress from './miner-address.js'
-import Version from './version.js'
+import MinerPanel from './miner-panel.js'
 
 function LocalNet (props) {
   const node0 = useLotusClient(0, 'node')
@@ -26,9 +24,7 @@ function LocalNet (props) {
     <div style=${{display: 'grid', gridTemplateRows: `repeat(${nodes.length}, auto)`}}>
       ${nodes.map(([node, miner], i) => html`
         <div style=${{gridColumn: i + 1}}>
-          <${MinerAddress} client=${miner} />
-          <${ChainNotify} client=${node} />
-          <${Version} client=${miner} />
+          <${MinerPanel} node=${node} miner=${miner} />
         </div>
       `)}
     </div>
