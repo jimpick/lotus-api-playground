@@ -5,13 +5,11 @@ export default function Version ({ client }) {
   const [version, setVersion] = useState()
 
   useEffect(() => {
-    if (client) {
-      async function run () {
-        const version = await client.version()
-        setVersion(version)
-      }
-      run()
+    async function run () {
+      const version = await client.version()
+      setVersion(version)
     }
+    run()
   }, [client])
 
   if (!version) return html`<div>Loading...</div>`

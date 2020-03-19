@@ -1,6 +1,7 @@
 const methods = {
   Version: {},
   ChainNotify: {
+    args: [],
     subscription: true
   },
   ListMiners: {},

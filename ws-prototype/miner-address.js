@@ -5,13 +5,11 @@ export default function MinerAddress ({ client }) {
   const [address, setAddress] = useState()
 
   useEffect(() => {
-    if (client) {
-      async function run () {
-        const address = await client.actorAddress()
-        setAddress(address)
-      }
-      run()
+    async function run () {
+      const address = await client.actorAddress()
+      setAddress(address)
     }
+    run()
   }, [client])
 
   return html`

@@ -19,22 +19,19 @@ export default class LotusClientRPC {
   }
 
   async callSchemaMethod (method, schemaMethod, ...args) {
-    // console.log('Jim callSchemaMethod', method, schemaMethod, args)
+    console.log('Jim callSchemaMethod', method, schemaMethod, args)
     await this.provider.connect()
     const request = {
-      method: `Filecoin.${method}`,
-      params: args
+      method: `Filecoin.${method}`
     }
-    return await this.provider.send(request)
-  }
-
-  async actorAddressX () {
-    await this.provider.connect()
-    const request = {
-      method: 'Filecoin.ActorAddress',
-      params: []
+    if (schemaMethod.subscription) {
+      const cb = args[0]
+      request.params = args.slice(1)
+      return this.provider.sendSubscription(request, cb)
+    } else {
+      request.params = args
+      return await this.provider.send(request)
     }
-    return await this.provider.send(request)
   }
 
   close () {
