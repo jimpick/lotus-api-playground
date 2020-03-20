@@ -105,7 +105,7 @@ export default function MinerPanel ({ node, miner }) {
             <li key=${sector.sectorNum}>${sector.sectorNum}: ${sector.state}</li>
           `)}
         </ul>
-        <button onClick=${pledge}>Pledge</button>
+        <!-- <button onClick=${pledge}>Pledge</button> -->
       </div>
       <br />
       <${Version} client=${miner} />
