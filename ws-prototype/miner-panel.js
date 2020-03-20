@@ -25,7 +25,7 @@ const sectorStates = {
   31: 'FaultedFinal'
 }
 
-export default function MinerAddress ({ node, miner }) {
+export default function MinerPanel ({ node, miner }) {
   const [address, setAddress] = useState()
   const [sectorSize, setSectorSize] = useState()
   const [minerPower, setMinerPower] = useState()
@@ -86,23 +86,23 @@ export default function MinerAddress ({ node, miner }) {
       <div>
         Sector Count:
         <ul style=${{margin: '0 0'}}>
-          <li>Committed: ${sectorCount && sectorCount.Sset}</li>
-          <li>Proving: ${sectorCount && sectorCount.Pset}</li>
-          <li>Faults: ${faults && faults.length}</li>
+          <li key="1">Committed: ${sectorCount && sectorCount.Sset}</li>
+          <li key="2">Proving: ${sectorCount && sectorCount.Pset}</li>
+          <li key="3">Faults: ${faults && faults.length}</li>
         </ul>
       </div>
       <div>
         Post State: <br />
         <ul style=${{margin: '0 0'}}>
-          <li>Proving Period Start: ${postState && postState.ProvingPeriodStart}</li>
-          <li>Consecutive Failures: ${postState && postState.NumConsecutiveFailures}</li>
+          <li key="1">Proving Period Start: ${postState && postState.ProvingPeriodStart}</li>
+          <li key="2">Consecutive Failures: ${postState && postState.NumConsecutiveFailures}</li>
         </ul>
       </div>
       <div>
         Sectors: <br />
         <ul style=${{margin: '0 0'}}>
           ${sectors.map(sector => html`
-            <li>${sector.sectorNum}: ${sector.state}</li>
+            <li key=${sector.sectorNum}>${sector.sectorNum}: ${sector.state}</li>
           `)}
         </ul>
         <button onClick=${pledge}>Pledge</button>

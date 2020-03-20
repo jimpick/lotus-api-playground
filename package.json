@@ -18,12 +18,14 @@
   "author": "Jim Pick (@jimpick)",
   "license": "MIT",
   "dependencies": {
+    "@pika/react": "^16.13.1",
+    "@pika/react-dom": "^16.13.1",
     "htm": "^3.0.3",
     "http-proxy": "^1.18.0",
     "it-pipe": "^1.1.0",
     "it-pushable": "^1.4.0",
-    "react": "npm:@pika/react",
-    "react-dom": "npm:@pika/react-dom",
+    "react": "npm:@jimpick/react-experimental@16.13.0-0",
+    "react-dom": "npm:@jimpick/react-dom-experimental@16.13.0-0",
     "react-json-view": "^1.19.1",
     "ws": "^7.2.3",
     "wscat": "^4.0.0"
