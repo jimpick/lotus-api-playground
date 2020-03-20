@@ -22,6 +22,17 @@ route @api_miner_0 {
   reverse_proxy localhost:12345
 }
 
+@api_testplan_0 {
+    path_regexp api ^/api/0/testplan/(.*)$
+}
+
+route @api_testplan_0 {
+  strip_prefix /api/0/testplan/* /api/0/testplan
+  reverse_proxy localhost:30000
+}
+
+
+
 @api_node_1 {
     path_regexp api ^/api/1/node/(.*)$
 }
@@ -40,6 +51,16 @@ route @api_miner_1 {
   reverse_proxy localhost:12346
 }
 
+@api_testplan_1 {
+    path_regexp api ^/api/1/testplan/(.*)$
+}
+
+route @api_testplan_1 {
+  strip_prefix /api/1/testplan/* /api/1/testplan
+  reverse_proxy localhost:30001
+}
+
+
 @api_node_2 {
     path_regexp api ^/api/2/node/(.*)$
 }
@@ -56,6 +77,15 @@ route @api_node_2 {
 route @api_miner_2 {
   strip_prefix /api/2/miner/* /api/2/miner
   reverse_proxy localhost:12347
+}
+
+@api_testplan_2 {
+    path_regexp api ^/api/2/testplan/(.*)$
+}
+
+route @api_testplan_2 {
+  strip_prefix /api/2/testplan/* /api/2/testplan
+  reverse_proxy localhost:30002
 }
 
 
