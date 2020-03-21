@@ -2,6 +2,7 @@ import { useEffect, useState } from '/web_modules/react.js'
 import { html } from '/web_modules/htm/react.js'
 import ChainNotify from './chain-notify.js'
 import Version from './version.js'
+import suspenseDelay from './suspense-delay.js'
 
 const sectorStates = {
   0: 'UndefinedSectorState',
@@ -24,6 +25,8 @@ const sectorStates = {
   30: 'FaultReported',
   31: 'FaultedFinal'
 }
+
+const delay = suspenseDelay(1000)
 
 export default function MinerPanel ({ node, miner }) {
   const [address, setAddress] = useState()
@@ -71,8 +74,11 @@ export default function MinerPanel ({ node, miner }) {
     run()
   }, [address, node, miner, refresh])
 
+  const ok = delay.read()
+
   return html`
     <div>
+      <div>OK: ${ok}</div>
       <${ChainNotify} client=${node} />
       <div>
         Address: ${address}

@@ -1,5 +1,6 @@
 import ReactDOM from '/web_modules/react-dom.js'
-import { html } from '/web_modules/htm/react.js'
+import { Suspense } from '/web_modules/react.js'
+import { html  } from '/web_modules/htm/react.js'
 import useLotusClient from './use-lotus-client.js'
 import MinerPanel from './miner-panel.js'
 
@@ -25,7 +26,9 @@ function LocalNet (props) {
       <div style=${{display: 'grid', gridTemplateRows: `repeat(${nodes.length}, auto)`}}>
         ${nodes.map(([node, miner], i) => html`
           <div key=${i} style=${{gridColumn: i + 1}}>
-            <${MinerPanel} node=${node} miner=${miner} />
+            <${Suspense} fallback=${html`Loading...`}>
+              <${MinerPanel} node=${node} miner=${miner} />
+            <//>
           </div>
         `)}
       </div>
