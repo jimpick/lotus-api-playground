@@ -3,6 +3,7 @@ import { Suspense } from '/web_modules/react.js'
 import { html  } from '/web_modules/htm/react.js'
 import useLotusClient from './use-lotus-client.js'
 import MinerPanel from './miner-panel.js'
+import MinerPanel2 from './miner-panel2.js'
 
 function LocalNet (props) {
   const node0 = useLotusClient(0, 'node')
@@ -27,7 +28,10 @@ function LocalNet (props) {
         ${nodes.map(([node, miner], i) => html`
           <div key=${i} style=${{gridColumn: i + 1}}>
             <${Suspense} fallback=${html`Loading...`}>
-              <${MinerPanel} node=${node} miner=${miner} />
+              <${MinerPanel2} node=${node} miner=${miner} />
+              <${Suspense} fallback=${html`Loading...`}>
+                <${MinerPanel} node=${node} miner=${miner} />
+              <//>
             <//>
           </div>
         `)}

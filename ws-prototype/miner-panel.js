@@ -26,7 +26,7 @@ const sectorStates = {
   31: 'FaultedFinal'
 }
 
-const delay = suspenseDelay(1000)
+const delay = suspenseDelay(2000)
 
 export default function MinerPanel ({ node, miner }) {
   const [address, setAddress] = useState()
