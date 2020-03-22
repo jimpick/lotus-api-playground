@@ -37,6 +37,7 @@ export default function MinerPanel ({ node, miner }) {
   const [postState, setPostState] = useState()
   const [sectors, setSectors] = useState([])
   const [refresh, setRefresh] = useState([])
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     async function run () {
@@ -111,14 +112,18 @@ export default function MinerPanel ({ node, miner }) {
             <li key=${sector.sectorNum}>${sector.sectorNum}: ${sector.state}</li>
           `)}
         </ul>
-        <button onClick=${pledge}>Pledge</button>
+        <button onClick=${pledge}>Pledge</button> <span>${message}</span>
       </div>
       <br />
       <${Version} client=${miner} />
     </div>
   `
 
-  function pledge (event) {
-    alert('not implemented yet')
+  async function pledge () {
+    setMessage('Pledging...')
+    await miner.pledgeSector()
+    setMessage('Sector Pledged')
+    setRefresh(Date.now())
+    setTimeout(() => setMessage(''), 1000)
   }
 }

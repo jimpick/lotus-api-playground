@@ -165,6 +165,16 @@ const methods = {
 
   // Storage Miner low-level api_storage.go
 
+	// Temp api for testing
+  // PledgeSector(context.Context) error
+	// return nodeApi.PledgeSector(ctx)
+  PledgeSector: {
+    args: [],
+    output: {
+    },
+    perm: 'write'
+  },
+
 	// List all staged sectors
 	// SectorsList(context.Context) ([]abi.SectorNumber, error)
   // sectors, err := napi.SectorsList(ctx)

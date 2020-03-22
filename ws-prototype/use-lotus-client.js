@@ -14,7 +14,7 @@ export default function useLotusClient (nodeNumber, nodeOrMiner) {
       const response = await fetch(tokenUrl)
       const token = await response.text()
       const wsUrl = 'wss://' + api + `/${nodeNumber}/${nodeOrMiner}/rpc/v0`
-      const provider = new BrowserProvider(wsUrl)
+      const provider = new BrowserProvider(wsUrl, { token })
       setClient(new LotusRPC(provider, { schema }))
     }
     run()

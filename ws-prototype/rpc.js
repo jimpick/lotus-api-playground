@@ -19,7 +19,7 @@ export default class LotusClientRPC {
   }
 
   async callSchemaMethod (method, schemaMethod, ...args) {
-    console.log('Jim callSchemaMethod', method, schemaMethod, args)
+    // console.log('Jim callSchemaMethod', method, schemaMethod, args)
     await this.provider.connect()
     const request = {
       method: `Filecoin.${method}`
