@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "Jim Pick (@jimpick)",
-  "license": "MIT",
+  "license": "(Apache-2.0 AND MIT)",
   "dependencies": {
     "@filecoin-shipyard/lotus-client-schema": "^0.0.2",
     "@filecoin-shipyard/lotus-client-rpc": "^0.0.2",
