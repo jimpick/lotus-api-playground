@@ -27,10 +27,10 @@ export default class LotusClientRPC {
     if (schemaMethod.subscription) {
       const cb = args[0]
       request.params = args.slice(1)
-      return this.provider.sendSubscription(request, cb)
+      return this.provider.sendSubscription(request, schemaMethod, cb)
     } else {
       request.params = args
-      return await this.provider.send(request)
+      return await this.provider.send(request, schemaMethod)
     }
   }
 

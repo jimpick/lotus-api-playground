@@ -1,9 +1,20 @@
 const methods = {
-  Version: {},
+  // Version func(context.Context) (api.Version, error)
+  Version: {
+    args: [],
+    output: {
+      name: 'version',
+      primitiveType: 'object',
+      complexType: 'Version'
+    }
+    // perm: 'write' // FIXME: Not really, just for testing http mode
+  },
+
   ChainNotify: {
     args: [],
     subscription: true
   },
+
   ListMiners: {},
 
   // Full Node
@@ -324,6 +335,24 @@ var SectorStates = []string{
 	Faulty:        "Faulty",
 	FaultReported: "FaultReported",
 	FaultedFinal:  "FaultedFinal",
+}
+*/
+
+/*
+// Version provides various build-time information
+type Version struct {
+	Version string
+
+	// APIVersion is a binary encoded semver version of the remote implementing
+	// this api
+	//
+	// See APIVersion in build/version.go
+	APIVersion build.Version
+
+	// TODO: git commit / os / genesis cid?
+
+	// Seconds
+	BlockDelay uint64
 }
 */
 

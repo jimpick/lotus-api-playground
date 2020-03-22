@@ -1,9 +1,11 @@
 export default class BrowserProvider {
-  constructor (url) {
+  constructor (url, options = {}) {
     this.url = url
+    this.httpUrl = url.replace(/^wss:/, 'https:' )
     this.id = 0
     this.inflight = new Map()
     this.subscriptions = new Map()
+    this.token = options.token
   }
 
   connect () {
@@ -20,17 +22,46 @@ export default class BrowserProvider {
     return this.connectPromise
   }
 
-  send (request) {
-    const json = {
+  send (request, schemaMethod) {
+    const jsonRpcRequest = {
       jsonrpc: '2.0',
       id: this.id++,
       ...request
     }
+    if (schemaMethod.perm === 'write') {
+      return this.sendHttp(jsonRpcRequest)
+    } else {
+      return this.sendWs(jsonRpcRequest)
+    }
+  }
+
+  async sendHttp (jsonRpcRequest) {
+    const headers = {
+      'Content-Type': 'text/plain;charset=UTF-8',
+      Accept: '*/*'
+    }
+    if (this.token) {
+      headers.Authorization = `Bearer ${this.token}`
+    }
+    try {
+      const response = await fetch(this.httpUrl, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(jsonRpcRequest)
+      })
+      // FIXME: Check return code, errors
+      const { result } = await response.json()
+      return result
+    } catch (e) {
+      throw e
+    }
+  }
+
+  sendWs (jsonRpcRequest) {
     const promise = new Promise((resolve, reject) => {
-      console.log('Jim send', json)
-      this.ws.send(JSON.stringify(json))
+      this.ws.send(JSON.stringify(jsonRpcRequest))
       // FIXME: Add timeout
-      this.inflight.set(json.id, (err, result) => {
+      this.inflight.set(jsonRpcRequest.id, (err, result) => {
         if (err) {
           reject(err)
         } else {
@@ -41,7 +72,7 @@ export default class BrowserProvider {
     return promise
   }
 
-  sendSubscription (request, subscriptionCb) {
+  sendSubscription (request, schemaMethod, subscriptionCb) {
     let chanId = null
     const json = {
       jsonrpc: '2.0',
@@ -49,12 +80,10 @@ export default class BrowserProvider {
       ...request
     }
     const promise = new Promise((resolve, reject) => {
-      console.log('Jim sendSubscription', json)
       this.ws.send(JSON.stringify(json))
       // FIXME: Add timeout
       this.inflight.set(json.id, (err, result) => {
         chanId = result
-        console.log('Jim subscription chanId', chanId, typeof chanId)
         this.subscriptions.set(chanId, subscriptionCb)
         if (err) {
           reject(err)
