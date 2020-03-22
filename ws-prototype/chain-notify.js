@@ -7,16 +7,17 @@ export default function ChainNotify ({ client }) {
   useEffect(() => {
     async function run () {
       const cancelFunc = await client.chainNotify(newChanges)
-      console.log('Jim cancelFunc', cancelFunc)
       function newChanges (changes) {
         for (const change of changes) {
           const {
             Type: changeType,
             Val: { Height: height }
           } = change
+          /*
           console.log(
             `Time: ${new Date()} Type: ${changeType} Height: ${height}`
           )
+          */
           if (changeType === 'current' || changeType === 'apply') {
             setHeight(height)
           }

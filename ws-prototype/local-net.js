@@ -28,10 +28,7 @@ function LocalNet (props) {
         ${nodes.map(([node, miner], i) => html`
           <div key=${i} style=${{gridColumn: i + 1}}>
             <${Suspense} fallback=${html`Loading...`}>
-              <${MinerPanel2} node=${node} miner=${miner} />
-              <${Suspense} fallback=${html`Loading...`}>
-                <${MinerPanel} node=${node} miner=${miner} />
-              <//>
+              <${MinerPanel} node=${node} miner=${miner} />
             <//>
           </div>
         `)}

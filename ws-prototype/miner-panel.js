@@ -2,7 +2,6 @@ import { useEffect, useState } from '/web_modules/react.js'
 import { html } from '/web_modules/htm/react.js'
 import ChainNotify from './chain-notify.js'
 import Version from './version.js'
-import suspenseDelay from './suspense-delay.js'
 
 const sectorStates = {
   0: 'UndefinedSectorState',
@@ -25,8 +24,6 @@ const sectorStates = {
   30: 'FaultReported',
   31: 'FaultedFinal'
 }
-
-const delay = suspenseDelay(2000)
 
 export default function MinerPanel ({ node, miner }) {
   const [address, setAddress] = useState()
@@ -52,7 +49,6 @@ export default function MinerPanel ({ node, miner }) {
   useEffect(() => {
     if (!address) return
     async function run () {
-      console.log('Refresh')
       const minerPower = await node.stateMinerPower(address, [])
       setMinerPower(minerPower)
       const sectorCount = await node.stateMinerSectorCount(address, [])
@@ -69,17 +65,16 @@ export default function MinerPanel ({ node, miner }) {
           sectorStates[status.State] : status.State
         sectors.push({ sectorNum, state })
       }
-      setSectors(sectors)
+      setSectors(sectors.sort(({sectorNum: a}, {sectorNum: b}) => {
+        return Number(a) - Number(b)
+      }))
       setTimeout(() => setRefresh(Date.now()), 5000)
     }
     run()
   }, [address, node, miner, refresh])
 
-  const ok = delay.read()
-
   return html`
     <div>
-      <div>OK: ${ok}</div>
       <${ChainNotify} client=${node} />
       <div>
         Address: ${address}
