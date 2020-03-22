@@ -752,6 +752,20 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@filecoin-shipyard/lotus-client-provider-browser@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.1.tgz#e30c518ee7f013c7c4122fbbdfb3c8365139a6ee"
+  integrity sha512-57IeZwlzMSu210p588oP67gJrzGa8Fs/7CiQOUMZRgrmA+90QwhlgWlnmXubboGHBOqKwGpNcxu9Z2+nhVtypQ==
+  dependencies:
+    standardx "^5.0.0"
+
+"@filecoin-shipyard/lotus-client-rpc@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.2.tgz#01a43fd6cd33f32be532af2a2e311f47cf28458b"
+  integrity sha512-xLK2Yy0CFKFN8+DEB8zJHxuzTuwo1MEMOXDp8ZJeQEVcQD51Uojs5gNaODyUVZ7vjbGFXy7ggg2Yhv3It2LgzQ==
+  dependencies:
+    standardx "^5.0.0"
+
 "@filecoin-shipyard/lotus-client-schema@^0.0.2":
   version "0.0.2"
   resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.2.tgz#0725dd8392639445a37e9e3e626566e943b6e13b"

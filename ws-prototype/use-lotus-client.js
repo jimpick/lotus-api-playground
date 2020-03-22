@@ -1,6 +1,6 @@
 import { useEffect, useState } from '/web_modules/react.js'
-import LotusRPC from './rpc.js'
-import BrowserProvider from './provider.js'
+import LotusRPC from '/web_modules/@filecoin-shipyard/lotus-client-rpc.js'
+import BrowserProvider from '/web_modules/@filecoin-shipyard/lotus-client-provider-browser.js'
 import schema from '/web_modules/@filecoin-shipyard/lotus-client-schema/prototype/testnet-v3.js'
 
 export default function useLotusClient (nodeNumber, nodeOrMiner) {

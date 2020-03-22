@@ -19,6 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "@filecoin-shipyard/lotus-client-schema": "^0.0.2",
+    "@filecoin-shipyard/lotus-client-rpc": "^0.0.2",
+    "@filecoin-shipyard/lotus-client-provider-browser": "^0.0.1",
     "@pika/react": "^16.13.1",
     "@pika/react-dom": "^16.13.1",
     "htm": "^3.0.3",
@@ -48,6 +50,8 @@
       "react",
       "react-dom",
       "react-json-view",
+      "@filecoin-shipyard/lotus-client-provider-browser",
+      "@filecoin-shipyard/lotus-client-rpc",
       "@filecoin-shipyard/lotus-client-schema/prototype/testnet-v3.js"
     ]
   },
