@@ -18,6 +18,7 @@
   "author": "Jim Pick (@jimpick)",
   "license": "MIT",
   "dependencies": {
+    "@filecoin-shipyard/lotus-client-schema": "^0.0.2",
     "@pika/react": "^16.13.1",
     "@pika/react-dom": "^16.13.1",
     "htm": "^3.0.3",
@@ -46,7 +47,8 @@
       "it-pushable",
       "react",
       "react-dom",
-      "react-json-view"
+      "react-json-view",
+      "@filecoin-shipyard/lotus-client-schema/prototype/testnet-v3.js"
     ]
   },
   "standardx": {

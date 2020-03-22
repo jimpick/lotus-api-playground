@@ -752,6 +752,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@filecoin-shipyard/lotus-client-schema@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.2.tgz#0725dd8392639445a37e9e3e626566e943b6e13b"
+  integrity sha512-hORrt5rxwJAATnrbW9NC9YAtFW67GJjgKqkVIspAH8OP6MayaSqosW5tdRn/kHQaT3gVXe6u7P+7svGiN3+HYA==
+  dependencies:
+    standardx "^5.0.0"
+
 "@pika/react-dom@^16.13.1":
   version "16.13.1"
   resolved "https://registry.npmjs.org/@pika/react-dom/-/react-dom-16.13.1.tgz#8e684617ea2e3e0741e418954f74e8ec1c93f81d"
