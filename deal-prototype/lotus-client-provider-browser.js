@@ -6,6 +6,9 @@ class BrowserProvider {
     this.inflight = new Map()
     this.subscriptions = new Map()
     this.token = options.token
+    if (this.token && this.token !== '') {
+      this.url += `?token=${this.token}`
+    }
   }
 
   connect () {
@@ -28,11 +31,7 @@ class BrowserProvider {
       id: this.id++,
       ...request
     }
-    if (schemaMethod.perm === 'write') {
-      return this.sendHttp(jsonRpcRequest)
-    } else {
-      return this.sendWs(jsonRpcRequest)
-    }
+    return this.sendWs(jsonRpcRequest)
   }
 
   async sendHttp (jsonRpcRequest) {
