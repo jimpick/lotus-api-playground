@@ -30,10 +30,9 @@ const methods = {
     }
   },
 
-
-	// StateMinerPower         func(context.Context, address.Address, types.TipSetKey) (*api.MinerPower, error)                             `perm:"read"`
-	// percI := types.BigDiv(types.BigMul(pow.MinerPower, types.NewInt(1000000)), pow.TotalPower)
-	// fmt.Printf("Power: %s / %s (%0.4f%%)\n", types.SizeStr(pow.MinerPower), types.SizeStr(pow.TotalPower), float64(percI.Int64())/10000)
+  // StateMinerPower         func(context.Context, address.Address, types.TipSetKey) (*api.MinerPower, error)                             `perm:"read"`
+  // percI := types.BigDiv(types.BigMul(pow.MinerPower, types.NewInt(1000000)), pow.TotalPower)
+  // fmt.Printf("Power: %s / %s (%0.4f%%)\n", types.SizeStr(pow.MinerPower), types.SizeStr(pow.TotalPower), float64(percI.Int64())/10000)
   StateMinerPower: {
     args: [
       {
@@ -55,8 +54,8 @@ const methods = {
     }
   },
 
-//	StateMinerPostState(ctx context.Context, actor address.Address, tsk types.TipSetKey) (*miner.PoStState, error)
-// ps, err := api.StateMinerPostState(ctx, maddr, types.EmptyTSK)
+  //	StateMinerPostState(ctx context.Context, actor address.Address, tsk types.TipSetKey) (*miner.PoStState, error)
+  // ps, err := api.StateMinerPostState(ctx, maddr, types.EmptyTSK)
   StateMinerPostState: {
     args: [
       {
@@ -78,11 +77,9 @@ const methods = {
     }
   },
 
-
-
-	// StateMinerSectorSize    func(context.Context, address.Address, types.TipSetKey) (abi.SectorSize, error)                              `perm:"read"`
+  // StateMinerSectorSize    func(context.Context, address.Address, types.TipSetKey) (abi.SectorSize, error)                              `perm:"read"`
   // sizeByte, err := api.StateMinerSectorSize(ctx, maddr, types.EmptyTSK)
-	// fmt.Printf("Sector Size: %s\n", types.SizeStr(types.NewInt(uint64(sizeByte))))
+  // fmt.Printf("Sector Size: %s\n", types.SizeStr(types.NewInt(uint64(sizeByte))))
   StateMinerSectorSize: {
     args: [
       {
@@ -104,8 +101,8 @@ const methods = {
     }
   },
 
-// StateMinerFaults(context.Context, address.Address, types.TipSetKey) ([]abi.SectorNumber, error)
-// faults, err := api.StateMinerFaults(ctx, maddr, types.EmptyTSK)
+  // StateMinerFaults(context.Context, address.Address, types.TipSetKey) ([]abi.SectorNumber, error)
+  // faults, err := api.StateMinerFaults(ctx, maddr, types.EmptyTSK)
   StateMinerFaults: {
     args: [
       {
@@ -127,8 +124,8 @@ const methods = {
     }
   },
 
-// StateMinerSectorCount(context.Context, address.Address, types.TipSetKey) (MinerSectors, error)
-// secCounts, err := api.StateMinerSectorCount(ctx, maddr, types.EmptyTSK)
+  // StateMinerSectorCount(context.Context, address.Address, types.TipSetKey) (MinerSectors, error)
+  // secCounts, err := api.StateMinerSectorCount(ctx, maddr, types.EmptyTSK)
   StateMinerSectorCount: {
     args: [
       {
@@ -150,8 +147,24 @@ const methods = {
     }
   },
 
-	// WalletDefaultAddress func(context.Context) (address.Address, error)                                       `perm:"write"`
-	// addr, err = api.WalletDefaultAddress(ctx)
+  // WalletBalance        func(context.Context, address.Address) (types.BigInt, error)                         `perm:"read"`
+  // balance, err := api.WalletBalance(ctx, addr)
+  WalletBalance: {
+    args: [
+      {
+        name: 'walletAddress',
+        primitiveType: 'string',
+        complexType: 'WalletAddress'
+      }
+    ],
+    output: {
+      primitiveType: 'string',
+      complexType: 'BigInt'
+    }
+  },
+
+  // WalletDefaultAddress func(context.Context) (address.Address, error)                                       `perm:"write"`
+  // addr, err = api.WalletDefaultAddress(ctx)
   WalletDefaultAddress: {
     args: [],
     output: {
@@ -162,7 +175,7 @@ const methods = {
 
   // Storage Miner
 
-	// ActorAddress    func(context.Context) (address.Address, error)                 `perm:"read"`
+  // ActorAddress    func(context.Context) (address.Address, error)                 `perm:"read"`
   // maddr, err := nodeApi.ActorAddress(ctx)
   ActorAddress: {
     args: [],
@@ -174,18 +187,17 @@ const methods = {
 
   // Storage Miner low-level api_storage.go
 
-	// Temp api for testing
+  // Temp api for testing
   // PledgeSector(context.Context) error
-	// return nodeApi.PledgeSector(ctx)
+  // return nodeApi.PledgeSector(ctx)
   PledgeSector: {
     args: [],
-    output: {
-    },
+    output: {},
     perm: 'write'
   },
 
-	// List all staged sectors
-	// SectorsList(context.Context) ([]abi.SectorNumber, error)
+  // List all staged sectors
+  // SectorsList(context.Context) ([]abi.SectorNumber, error)
   // sectors, err := napi.SectorsList(ctx)
   SectorsList: {
     args: [],
@@ -196,10 +208,10 @@ const methods = {
     }
   },
 
-	// Get the status of a given sector by ID
-	// SectorsStatus(context.Context, abi.SectorNumber) (SectorInfo, error)
+  // Get the status of a given sector by ID
+  // SectorsStatus(context.Context, abi.SectorNumber) (SectorInfo, error)
   // st, err := napi.SectorsStatus(ctx, s)
-	// out[api.SectorStates[st.State]]++
+  // out[api.SectorStates[st.State]]++
   SectorsStatus: {
     args: [
       {
@@ -213,9 +225,8 @@ const methods = {
       primitiveType: 'object',
       complexType: 'SectorInfo'
     }
-  },
-
-};
+  }
+}
 
 // Complex Types
 
@@ -377,6 +388,6 @@ type Version struct {
 
 const schema = {
   methods
-};
+}
 
-export default schema;
+export default schema
