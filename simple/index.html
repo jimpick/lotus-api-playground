@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Get Version</title>
+  </head>
+  <body>
+    <h1>Get Version</h1>
+    <pre></pre>
+    <script type="module">
+      import LotusRPC from 'https://bafybeidiu6e6qbcr7lfpmktbgdvem3l4esr5l6rqx4ey4ley4x64r43fmm.ipfs.dweb.link/web_modules/@filecoin-shipyard/lotus-client-rpc.js'
+      import BrowserProvider from 'https://bafybeidiu6e6qbcr7lfpmktbgdvem3l4esr5l6rqx4ey4ley4x64r43fmm.ipfs.dweb.link/web_modules/@filecoin-shipyard/lotus-client-provider-browser.js'
+      import schema from 'https://bafybeidiu6e6qbcr7lfpmktbgdvem3l4esr5l6rqx4ey4ley4x64r43fmm.ipfs.dweb.link/web_modules/@filecoin-shipyard/lotus-client-schema/prototype/testnet-v3.js'
+
+      const wsUrl = 'wss://lotus.testground.ipfs.team/api/0/node/rpc/v0'
+      const provider = new BrowserProvider(wsUrl)
+      const client = new LotusRPC(provider, { schema })
+
+      async function run () {
+        const result = await client.version()
+        const preEl = document.querySelector('pre')
+        preEl.textContent = JSON.stringify(result)
+      }
+      run()
+    </script>
+  </body>
+</html>
