@@ -38,9 +38,7 @@ export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNode
 
   useEffect(() => {
     async function run () {
-      console.log('Jim1', miner)
       const address = await miner.actorAddress()
-      console.log('Jim2', address)
       setAddress(address)
       if (address === 't01000') {
         updateGenesisNodeNumber(nodeNumber)

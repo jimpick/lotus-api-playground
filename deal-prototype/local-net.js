@@ -28,6 +28,10 @@ function LocalNet (props) {
     }
   }
 
+  function proposeDeal (cid, minerAddress) {
+    console.log(`Proposing deal to ${minerAddress} for ${cid}`)
+  }
+
   return html`
     <div>
       <h1>Deal Prototype</h1>
@@ -39,6 +43,7 @@ function LocalNet (props) {
           <${Uploader}
             nodeNumber=${uploaderNodeNumber}
             token=${nodes[uploaderNodeNumber][2]}
+            proposeDeal=${proposeDeal}
           />
         `}
       <div

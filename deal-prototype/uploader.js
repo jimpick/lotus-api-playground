@@ -5,7 +5,7 @@ import FilePicker from './filePicker.js'
 import Importer from './importer.js'
 import useImportedCids from './useImportedCids.js'
 
-export default function Uploader ({ nodeNumber, token }) {
+export default function Uploader ({ nodeNumber, token, proposeDeal }) {
   const [file, setFile] = useState()
   const cids = useImportedCids()
 
@@ -41,7 +41,7 @@ export default function Uploader ({ nodeNumber, token }) {
     } else {
       const { importedAt, name, type, size } = record
       view = html`
-        <div>
+        <div style=${{ marginBottom: '1rem' }}>
           <ul>
             <li>CID: ${cid}</li>
             <li>Name: ${name}</li>
@@ -49,8 +49,19 @@ export default function Uploader ({ nodeNumber, token }) {
             <li>Size: ${size}</li>
             <li>Imported At: ${importedAt}</li>
           </ul>
+          <button onClick=${() => deal('t01003')}>
+            Propose Deal with t01003
+          </button>
+          <button onClick=${() => deal('t01004')}>
+            Propose Deal with t01004
+          </button>
         </div>
       `
+
+      function deal (minerAddress) {
+        console.log('Jim deal', minerAddress)
+        proposeDeal(cid, minerAddress)
+      }
     }
   }
   return html`
