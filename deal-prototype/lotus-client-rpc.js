@@ -7,6 +7,7 @@ class LotusClientRPC {
         if (prop in obj) {
           return obj[prop]
         } else {
+          if (typeof prop !== 'string') return // React DevTools trips this!
           const method = prop.charAt(0).toUpperCase() + prop.slice(1);
           const schemaMethod = schema.methods[method];
           if (schemaMethod) {

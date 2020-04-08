@@ -8,6 +8,7 @@ import schema from './schema.js'
 
 export default function useLotusClient (nodeNumber, nodeOrMiner) {
   const [client, setClient] = useState()
+  const [token, setToken] = useState()
 
   useEffect(() => {
     async function run() {
@@ -16,6 +17,7 @@ export default function useLotusClient (nodeNumber, nodeOrMiner) {
         (nodeOrMiner === 'node' ? '.lotus' : '.lotusstorage') + '/token'
       const response = await fetch(tokenUrl)
       const token = await response.text()
+      setToken(token)
       const wsUrl = 'wss://' + api + `/${nodeNumber}/${nodeOrMiner}/rpc/v0`
       const provider = new BrowserProvider(wsUrl, { token })
       setClient(new LotusRPC(provider, { schema }))
@@ -23,5 +25,5 @@ export default function useLotusClient (nodeNumber, nodeOrMiner) {
     run()
   }, [])
 
-  return client
+  return [client, token]
 }

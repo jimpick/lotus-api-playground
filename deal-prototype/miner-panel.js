@@ -25,7 +25,7 @@ const sectorStates = {
   31: 'FaultedFinal'
 }
 
-export default function MinerPanel ({ node, miner }) {
+export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNodeNumber }) {
   const [address, setAddress] = useState()
   const [sectorSize, setSectorSize] = useState()
   const [minerPower, setMinerPower] = useState()
@@ -38,8 +38,13 @@ export default function MinerPanel ({ node, miner }) {
 
   useEffect(() => {
     async function run () {
+      console.log('Jim1', miner)
       const address = await miner.actorAddress()
+      console.log('Jim2', address)
       setAddress(address)
+      if (address === 't01000') {
+        updateGenesisNodeNumber(nodeNumber)
+      }
       const sectorSize = await node.stateMinerSectorSize(address, [])
       setSectorSize(sectorSize)
     }
