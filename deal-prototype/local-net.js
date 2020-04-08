@@ -36,7 +36,8 @@ function LocalNet (props) {
       Data: {
         TransferType: 'graphsync',
         Root: {
-          '/': 'bafkreifi255my6g5wket4fxgirz7zy2raocn7rytby6bucjl2aoeiqvy4y'
+          // '/': 'bafkreifi255my6g5wket4fxgirz7zy2raocn7rytby6bucjl2aoeiqvy4y'
+          '/': cid,
         },
         PieceCid: null,
         PieceSize: 0
