@@ -28,8 +28,26 @@ function LocalNet (props) {
     }
   }
 
-  function proposeDeal (cid, minerAddress) {
+  async function proposeDeal (cid, minerAddress) {
     console.log(`Proposing deal to ${minerAddress} for ${cid}`)
+    const node = nodes[genesisNodeNumber][0]
+    const address = await node.walletDefaultAddress()
+    const dataRef = {
+      Data: {
+        TransferType: 'graphsync',
+        Root: {
+          '/': 'bafkreifi255my6g5wket4fxgirz7zy2raocn7rytby6bucjl2aoeiqvy4y'
+        },
+        PieceCid: null,
+        PieceSize: 0
+      },
+      Wallet: address,
+      Miner: minerAddress,
+      EpochPrice: '500',
+      BlocksDuration: 100
+    }
+    const result = await node.clientStartDeal(dataRef)
+    console.log('Deal result', result)
   }
 
   return html`

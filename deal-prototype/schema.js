@@ -30,6 +30,32 @@ const methods = {
     }
   },
 
+  // ClientStartDeal   func(ctx context.Context, params *api.StartDealParams) (*cid.Cid, error)                             `perm:"admin"`
+  /*
+  {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "Filecoin.ClientStartDeal",
+    "params": [
+      {
+        "Data": {
+          "TransferType": "graphsync",
+          "Root": {
+            "/": "bafkreifi255my6g5wket4fxgirz7zy2raocn7rytby6bucjl2aoeiqvy4y"
+          },
+          "PieceCid": null,
+          "PieceSize": 0
+        },
+        "Wallet": "t3recoujjmhurgx6aki42e2fbtpomgs7rcr452bflztr434fc2q474wfy626um522k4hrmf25ns3qdvt3xguma",
+        "Miner": "t01003",
+        "EpochPrice": "500",
+        "BlocksDuration": 100
+      }
+    ]
+  }
+  */
+  ClientStartDeal: {},
+
   // StateMinerPower         func(context.Context, address.Address, types.TipSetKey) (*api.MinerPower, error)                             `perm:"read"`
   // percI := types.BigDiv(types.BigMul(pow.MinerPower, types.NewInt(1000000)), pow.TotalPower)
   // fmt.Printf("Power: %s / %s (%0.4f%%)\n", types.SizeStr(pow.MinerPower), types.SizeStr(pow.TotalPower), float64(percI.Int64())/10000)
