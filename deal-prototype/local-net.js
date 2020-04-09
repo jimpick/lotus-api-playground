@@ -1,10 +1,22 @@
 import ReactDOM from '/web_modules/react-dom.js'
-import { useState, Suspense } from '/web_modules/react.js'
+import { useState, useReducer, Suspense } from '/web_modules/react.js'
 import { html } from '/web_modules/htm/react.js'
 import Uploader from './uploader.js'
 import useLotusClient from './use-lotus-client.js'
 import MinerPanel from './miner-panel.js'
 import ErrorBoundary from './error-boundary.js'
+import MarketBalances from './market-balances.js'
+
+function reducer (state, action) {
+  switch (action.type) {
+    case 'addWallet':
+      const newWallets = new Set(state)
+      newWallets.add(action.walletAddress)
+      return newWallets
+    default:
+      throw new Error()
+  }
+}
 
 function LocalNet (props) {
   const [genesisNodeNumber, setGenesisNodeNumber] = useState()
@@ -14,6 +26,7 @@ function LocalNet (props) {
   const [miner1] = useLotusClient(1, 'miner')
   const [node2, nodeToken2] = useLotusClient(2, 'node')
   const [miner2] = useLotusClient(2, 'miner')
+  const [wallets, walletsDispatch] = useReducer(reducer, new Set())
 
   const nodes = []
   if (node0 && miner0) nodes[0] = [node0, miner0, nodeToken0]
@@ -37,7 +50,7 @@ function LocalNet (props) {
         TransferType: 'graphsync',
         Root: {
           // '/': 'bafkreifi255my6g5wket4fxgirz7zy2raocn7rytby6bucjl2aoeiqvy4y'
-          '/': cid,
+          '/': cid
         },
         PieceCid: null,
         PieceSize: 0
@@ -90,6 +103,12 @@ function LocalNet (props) {
                     node=${node}
                     miner=${miner}
                     updateGenesisNodeNumber=${updateGenesisNodeNumber}
+                  />
+                  <hr />
+                  <${MarketBalances}
+                    node=${node}
+                    wallets=${wallets}
+                    walletsDispatch=${walletsDispatch}
                   />
                 <//>
               <//>

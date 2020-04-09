@@ -173,6 +173,23 @@ const methods = {
     }
   },
 
+  // StateMarketBalance       func(context.Context, address.Address, types.TipSetKey) (api.MarketBalance, error)                                  `perm:"read"`
+  StateMarketBalance: {
+    args: [
+      {
+        name: 'address',
+        primitiveType: 'string',
+        complexType: 'Address'
+      },
+      {
+        name: 'tipSetKey',
+        primitiveType: 'string',
+        complexType: 'TipSetKey',
+        default: ''
+      }
+    ]
+  },
+
   // WalletBalance        func(context.Context, address.Address) (types.BigInt, error)                         `perm:"read"`
   // balance, err := api.WalletBalance(ctx, addr)
   WalletBalance: {
