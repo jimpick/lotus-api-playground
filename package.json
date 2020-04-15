@@ -18,9 +18,9 @@
   "author": "Jim Pick (@jimpick)",
   "license": "(Apache-2.0 AND MIT)",
   "dependencies": {
-    "@filecoin-shipyard/lotus-client-provider-browser": "^0.0.1",
-    "@filecoin-shipyard/lotus-client-rpc": "^0.0.2",
-    "@filecoin-shipyard/lotus-client-schema": "^0.0.5",
+    "@filecoin-shipyard/lotus-client-provider-browser": "^0.0.3",
+    "@filecoin-shipyard/lotus-client-rpc": "^0.0.3",
+    "@filecoin-shipyard/lotus-client-schema": "^0.0.6",
     "@openworklabs/filecoin-number": "^0.0.6",
     "@pika/react": "^16.13.1",
     "@pika/react-dom": "^16.13.1",

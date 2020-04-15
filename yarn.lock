@@ -760,24 +760,20 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@filecoin-shipyard/lotus-client-provider-browser@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.1.tgz#e30c518ee7f013c7c4122fbbdfb3c8365139a6ee"
-  integrity sha512-57IeZwlzMSu210p588oP67gJrzGa8Fs/7CiQOUMZRgrmA+90QwhlgWlnmXubboGHBOqKwGpNcxu9Z2+nhVtypQ==
-  dependencies:
-    standardx "^5.0.0"
+"@filecoin-shipyard/lotus-client-provider-browser@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.3.tgz#434da7a011b8ec4f53d9f74e4e99023ff13413bf"
+  integrity sha512-j5Q/UdMGR77UwbR91l1/i+RJZRTAhTrU84hrFCddpNwi3J1W2RmO3MCBY0bcZa0GambKDu+PDSXWexDa/JFK1Q==
 
-"@filecoin-shipyard/lotus-client-rpc@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.2.tgz#01a43fd6cd33f32be532af2a2e311f47cf28458b"
-  integrity sha512-xLK2Yy0CFKFN8+DEB8zJHxuzTuwo1MEMOXDp8ZJeQEVcQD51Uojs5gNaODyUVZ7vjbGFXy7ggg2Yhv3It2LgzQ==
-  dependencies:
-    standardx "^5.0.0"
+"@filecoin-shipyard/lotus-client-rpc@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.3.tgz#fa94d8df7a47a3af0a0c637091e3fdea3b8b14c0"
+  integrity sha512-dXujFQhYgm0/CJqmVR+zOZNZZUDFoiEk8qLoaI/lL0YPhhDB8yFNxkggxKfhZtffyiUt7hKHbgrR/hN2f1ptKA==
 
-"@filecoin-shipyard/lotus-client-schema@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.5.tgz#f780ed1283c1adcef0315168332dde96bf1f00de"
-  integrity sha512-09QdJXsWt8nNzQeKNJb39S6qAj3vv/LouNw7zJe1fIMWLPk71CpO8t48v7YYSoUaGD8fpcC74BuN12D/wGGQrw==
+"@filecoin-shipyard/lotus-client-schema@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.6.tgz#89fa1af3c2c6bcbdeeb79c6ceff5c47a3d90216f"
+  integrity sha512-F8dY6kPLFpfqw7g8V5CZpjqNeCON5QtCfO7URKneziLHzxnItzXWubPNHudLd0H5fuRW2LH0f/L3fvUZFQ5g7g==
 
 "@openworklabs/filecoin-number@^0.0.6":
   version "0.0.6"
