@@ -3,8 +3,8 @@ import { useEffect, useState } from '/web_modules/react.js'
 import LotusRPC from './lotus-client-rpc.js'
 // import BrowserProvider from '/web_modules/@filecoin-shipyard/lotus-client-provider-browser.js'
 import BrowserProvider from './lotus-client-provider-browser.js'
-// import schema from '/web_modules/@filecoin-shipyard/lotus-client-schema/prototype/testnet-v3.js'
-import schema from './schema.js'
+import schema from '/web_modules/@filecoin-shipyard/lotus-client-schema/prototype/testnet-v3.js'
+// import schema from './schema.js'
 
 export default function useLotusClient (nodeNumber, nodeOrMiner) {
   const [client, setClient] = useState()

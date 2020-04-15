@@ -20,7 +20,7 @@
   "dependencies": {
     "@filecoin-shipyard/lotus-client-provider-browser": "^0.0.1",
     "@filecoin-shipyard/lotus-client-rpc": "^0.0.2",
-    "@filecoin-shipyard/lotus-client-schema": "^0.0.2",
+    "@filecoin-shipyard/lotus-client-schema": "^0.0.5",
     "@openworklabs/filecoin-number": "^0.0.6",
     "@pika/react": "^16.13.1",
     "@pika/react-dom": "^16.13.1",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "hundreds": "^0.0.2",
     "isomorphic-fetch": "^2.2.1",
-    "mocha": "^7.1.0",
+    "mocha": "^7.1.1",
     "polendina": "^1.0.0",
     "snowpack": "^1.6.0",
     "standardx": "^5.0.0"

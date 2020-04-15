@@ -102,9 +102,9 @@ export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNode
         </ul>
         <button onClick=${pledge}>Pledge</button> <span>${message}</span>
       </div>
-      <${WalletBalance} node=${node} />
     </div>
   `
+//      <${WalletBalance} node=${node} />
 
   async function pledge () {
     setMessage('Pledging...')

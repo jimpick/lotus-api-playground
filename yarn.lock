@@ -774,12 +774,10 @@
   dependencies:
     standardx "^5.0.0"
 
-"@filecoin-shipyard/lotus-client-schema@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.2.tgz#0725dd8392639445a37e9e3e626566e943b6e13b"
-  integrity sha512-hORrt5rxwJAATnrbW9NC9YAtFW67GJjgKqkVIspAH8OP6MayaSqosW5tdRn/kHQaT3gVXe6u7P+7svGiN3+HYA==
-  dependencies:
-    standardx "^5.0.0"
+"@filecoin-shipyard/lotus-client-schema@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.npmjs.org/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.5.tgz#f780ed1283c1adcef0315168332dde96bf1f00de"
+  integrity sha512-09QdJXsWt8nNzQeKNJb39S6qAj3vv/LouNw7zJe1fIMWLPk71CpO8t48v7YYSoUaGD8fpcC74BuN12D/wGGQrw==
 
 "@openworklabs/filecoin-number@^0.0.6":
   version "0.0.6"
@@ -4037,7 +4035,7 @@ mkdirp@^1.0.3:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.3.tgz#4cf2e30ad45959dddea53ad97d518b6c8205e1ea"
   integrity sha512-6uCP4Qc0sWsgMLy1EOqqS/3rjDHOEnsStVr/4vtAIK2Y5i2kA7lFFejYrpIyiN9w0pYf4ckeCYT9f1r1P9KX5g==
 
-mocha@^7.1.0:
+mocha@^7.1.1:
   version "7.1.1"
   resolved "https://registry.npmjs.org/mocha/-/mocha-7.1.1.tgz#89fbb30d09429845b1bb893a830bf5771049a441"
   integrity sha512-3qQsu3ijNS3GkWcccT5Zw0hf/rWvu1fTN9sPvEd81hlwsr30GX2GcDSSoBxo24IR8FelmrAydGC6/1J5QQP4WA==
