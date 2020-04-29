@@ -1,6 +1,6 @@
 import { useEffect, useState } from '/web_modules/react.js'
 import { html } from '/web_modules/htm/react.js'
-import ChainNotify from './chain-notify.js'
+// import ChainNotify from './chain-notify.js'
 import WalletBalance from './wallet-balance.js'
 
 const sectorStates = {
@@ -31,7 +31,6 @@ export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNode
   const [minerPower, setMinerPower] = useState()
   const [sectorCount, setSectorCount] = useState()
   const [faults, setFaults] = useState()
-  const [postState, setPostState] = useState()
   const [sectors, setSectors] = useState([])
   const [refresh, setRefresh] = useState()
   const [message, setMessage] = useState('')
@@ -43,7 +42,8 @@ export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNode
       if (address === 't01000') {
         updateGenesisNodeNumber(nodeNumber)
       }
-      const sectorSize = await node.stateMinerSectorSize(address, [])
+      const info = await node.stateMinerInfo(address, [])
+      const { SectorSize: sectorSize } = info
       setSectorSize(sectorSize)
     }
     run()
@@ -58,8 +58,6 @@ export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNode
       setSectorCount(sectorCount)
       const faults = await node.stateMinerFaults(address, [])
       setFaults(faults)
-      const postState = await node.stateMinerPostState(address, [])
-      setPostState(postState)
       const sectorsList = await miner.sectorsList()
       const sectors = []
       for (let sectorNum of sectorsList) {
@@ -78,12 +76,18 @@ export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNode
 
   return html`
     <div>
-      <${ChainNotify} client=${node} />
+      <!-- ChainNotify client=${node} -->
       <div>
         Address: ${address}
       </div>
       <div>
-        Miner Power: ${minerPower && html`${minerPower.MinerPower} / ${minerPower.TotalPower}`}
+        Sector Size: ${sectorSize}
+      </div>
+      <div>
+        Byte Power: ${minerPower && html`${minerPower.MinerPower.RawBytePower} / ${minerPower.TotalPower.RawBytePower}`}
+      </div>
+      <div>
+        Actual Power: ${minerPower && html`${minerPower.MinerPower.QualityAdjPower} / ${minerPower.TotalPower.QualityAdjPower}`}
       </div>
       <div>
         Sector Count:
