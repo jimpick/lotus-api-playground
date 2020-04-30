@@ -22,6 +22,8 @@ route @api_miner_0 {
   reverse_proxy localhost:12345
 }
 
+
+
 @api_node_1 {
     path_regexp api ^/api/1/node/(.*)$
 }
@@ -40,6 +42,8 @@ route @api_miner_1 {
   reverse_proxy localhost:12346
 }
 
+
+
 @api_node_2 {
     path_regexp api ^/api/2/node/(.*)$
 }
@@ -57,5 +61,187 @@ route @api_miner_2 {
   strip_prefix /api/2/miner/* /api/2/miner
   reverse_proxy localhost:12347
 }
+
+
+
+@api_node_3 {
+    path_regexp api ^/api/3/node/(.*)$
+}
+
+route @api_node_3 {
+  strip_prefix /api/3/node/* /api/3/node
+  reverse_proxy localhost:11237
+}
+
+@api_miner_3 {
+    path_regexp api ^/api/3/miner/(.*)$
+}
+
+route @api_miner_3 {
+  strip_prefix /api/3/miner/* /api/3/miner
+  reverse_proxy localhost:12348
+}
+
+
+
+@api_node_4 {
+    path_regexp api ^/api/4/node/(.*)$
+}
+
+route @api_node_4 {
+  strip_prefix /api/4/node/* /api/4/node
+  reverse_proxy localhost:11238
+}
+
+@api_miner_4 {
+    path_regexp api ^/api/4/miner/(.*)$
+}
+
+route @api_miner_4 {
+  strip_prefix /api/4/miner/* /api/4/miner
+  reverse_proxy localhost:12349
+}
+
+
+
+@api_node_5 {
+    path_regexp api ^/api/5/node/(.*)$
+}
+
+route @api_node_5 {
+  strip_prefix /api/5/node/* /api/5/node
+  reverse_proxy localhost:11239
+}
+
+@api_miner_5 {
+    path_regexp api ^/api/5/miner/(.*)$
+}
+
+route @api_miner_5 {
+  strip_prefix /api/5/miner/* /api/5/miner
+  reverse_proxy localhost:12350
+}
+
+
+
+
+@api_node_6 {
+    path_regexp api ^/api/6/node/(.*)$
+}
+
+route @api_node_6 {
+  strip_prefix /api/6/node/* /api/6/node
+  reverse_proxy localhost:11240
+}
+
+@api_miner_6 {
+    path_regexp api ^/api/6/miner/(.*)$
+}
+
+route @api_miner_6 {
+  strip_prefix /api/6/miner/* /api/6/miner
+  reverse_proxy localhost:12351
+}
+
+
+
+@api_node_7 {
+    path_regexp api ^/api/7/node/(.*)$
+}
+
+route @api_node_7 {
+  strip_prefix /api/7/node/* /api/7/node
+  reverse_proxy localhost:11241
+}
+
+@api_miner_7 {
+    path_regexp api ^/api/7/miner/(.*)$
+}
+
+route @api_miner_7 {
+  strip_prefix /api/7/miner/* /api/7/miner
+  reverse_proxy localhost:12352
+}
+
+
+
+@api_node_8 {
+    path_regexp api ^/api/8/node/(.*)$
+}
+
+route @api_node_8 {
+  strip_prefix /api/8/node/* /api/8/node
+  reverse_proxy localhost:11242
+}
+
+@api_miner_8 {
+    path_regexp api ^/api/8/miner/(.*)$
+}
+
+route @api_miner_8 {
+  strip_prefix /api/8/miner/* /api/8/miner
+  reverse_proxy localhost:12353
+}
+
+
+
+@api_node_9 {
+    path_regexp api ^/api/9/node/(.*)$
+}
+
+route @api_node_9 {
+  strip_prefix /api/9/node/* /api/9/node
+  reverse_proxy localhost:11243
+}
+
+@api_miner_9 {
+    path_regexp api ^/api/9/miner/(.*)$
+}
+
+route @api_miner_9 {
+  strip_prefix /api/9/miner/* /api/9/miner
+  reverse_proxy localhost:12354
+}
+
+
+
+@api_node_10 {
+    path_regexp api ^/api/10/node/(.*)$
+}
+
+route @api_node_10 {
+  strip_prefix /api/10/node/* /api/10/node
+  reverse_proxy localhost:11244
+}
+
+@api_miner_10 {
+    path_regexp api ^/api/10/miner/(.*)$
+}
+
+route @api_miner_10 {
+  strip_prefix /api/10/miner/* /api/10/miner
+  reverse_proxy localhost:12355
+}
+
+
+
+@api_node_11 {
+    path_regexp api ^/api/11/node/(.*)$
+}
+
+route @api_node_11 {
+  strip_prefix /api/11/node/* /api/11/node
+  reverse_proxy localhost:11245
+}
+
+@api_miner_11 {
+    path_regexp api ^/api/11/miner/(.*)$
+}
+
+route @api_miner_11 {
+  strip_prefix /api/11/miner/* /api/11/miner
+  reverse_proxy localhost:12356
+}
+
 
 
