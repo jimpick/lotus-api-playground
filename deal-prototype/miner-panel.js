@@ -1,7 +1,7 @@
 import { useEffect, useState } from '/web_modules/react.js'
 import { html } from '/web_modules/htm/react.js'
-import ChainNotify from './chain-notify.js'
-import Version from './version.js'
+// import ChainNotify from './chain-notify.js'
+import WalletBalance from './wallet-balance.js'
 
 const sectorStates = {
   0: 'UndefinedSectorState',
@@ -25,22 +25,25 @@ const sectorStates = {
   31: 'FaultedFinal'
 }
 
-export default function MinerPanel ({ node, miner }) {
+export default function MinerPanel ({ nodeNumber, node, miner, updateGenesisNodeNumber }) {
   const [address, setAddress] = useState()
   const [sectorSize, setSectorSize] = useState()
   const [minerPower, setMinerPower] = useState()
   const [sectorCount, setSectorCount] = useState()
   const [faults, setFaults] = useState()
-  const [postState, setPostState] = useState()
   const [sectors, setSectors] = useState([])
-  const [refresh, setRefresh] = useState([])
+  const [refresh, setRefresh] = useState()
   const [message, setMessage] = useState('')
 
   useEffect(() => {
     async function run () {
       const address = await miner.actorAddress()
       setAddress(address)
-      const sectorSize = await node.stateMinerSectorSize(address, [])
+      if (address === 't01000') {
+        updateGenesisNodeNumber(nodeNumber)
+      }
+      const info = await node.stateMinerInfo(address, [])
+      const { SectorSize: sectorSize } = info
       setSectorSize(sectorSize)
     }
     run()
@@ -55,8 +58,6 @@ export default function MinerPanel ({ node, miner }) {
       setSectorCount(sectorCount)
       const faults = await node.stateMinerFaults(address, [])
       setFaults(faults)
-      const postState = await node.stateMinerPostState(address, [])
-      setPostState(postState)
       const sectorsList = await miner.sectorsList()
       const sectors = []
       for (let sectorNum of sectorsList) {
@@ -75,7 +76,7 @@ export default function MinerPanel ({ node, miner }) {
 
   return html`
     <div>
-      <${ChainNotify} client=${node} />
+      <!-- ChainNotify client=${node} -->
       <div>
         Address: ${address}
       </div>
@@ -83,7 +84,10 @@ export default function MinerPanel ({ node, miner }) {
         Sector Size: ${sectorSize}
       </div>
       <div>
-        Miner Power: ${minerPower && html`${minerPower.MinerPower} / ${minerPower.TotalPower}`}
+        Byte Power: ${minerPower && html`${minerPower.MinerPower.RawBytePower} / ${minerPower.TotalPower.RawBytePower}`}
+      </div>
+      <div>
+        Actual Power: ${minerPower && html`${minerPower.MinerPower.QualityAdjPower} / ${minerPower.TotalPower.QualityAdjPower}`}
       </div>
       <div>
         Sector Count:
@@ -91,13 +95,6 @@ export default function MinerPanel ({ node, miner }) {
           <li key="1">Committed: ${sectorCount && sectorCount.Sset}</li>
           <li key="2">Proving: ${sectorCount && sectorCount.Pset}</li>
           <li key="3">Faults: ${faults && faults.length}</li>
-        </ul>
-      </div>
-      <div>
-        Post State: <br />
-        <ul style=${{margin: '0 0'}}>
-          <li key="1">Proving Period Start: ${postState && postState.ProvingPeriodStart}</li>
-          <li key="2">Consecutive Failures: ${postState && postState.NumConsecutiveFailures}</li>
         </ul>
       </div>
       <div>
@@ -109,10 +106,9 @@ export default function MinerPanel ({ node, miner }) {
         </ul>
         <button onClick=${pledge}>Pledge</button> <span>${message}</span>
       </div>
-      <br />
-      <${Version} client=${miner} />
     </div>
   `
+//      <${WalletBalance} node=${node} />
 
   async function pledge () {
     setMessage('Pledging...')

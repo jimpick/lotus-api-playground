@@ -1,7 +1,9 @@
 import ReactDOM from '/web_modules/react-dom.js'
-import { html } from '/web_modules/htm/react.js'
+import { Suspense } from '/web_modules/react.js'
+import { html  } from '/web_modules/htm/react.js'
 import useLotusClient from './use-lotus-client.js'
 import MinerPanel from './miner-panel.js'
+import MinerPanel2 from './miner-panel2.js'
 
 function LocalNet (props) {
   const node0 = useLotusClient(0, 'node')
@@ -17,23 +19,23 @@ function LocalNet (props) {
   if (node2 && miner2) nodes.push([node2, miner2])
 
   return html`
-    <h1>Websocket Prototype</h1>
-    <nav>
-      <a href="/">Top</a>
-    </nav>
-    <div style=${{display: 'grid', gridTemplateRows: `repeat(${nodes.length}, auto)`}}>
-      ${nodes.map(([node, miner], i) => html`
-        <div style=${{gridColumn: i + 1}}>
-          <${MinerPanel} node=${node} miner=${miner} />
-        </div>
-      `)}
+    <div>
+      <h1>Websocket Prototype</h1>
+      <nav>
+        <a href="/">Top</a>
+      </nav>
+      <div style=${{display: 'grid', gridTemplateRows: `repeat(${nodes.length}, auto)`}}>
+        ${nodes.map(([node, miner], i) => html`
+          <div key=${i} style=${{gridColumn: i + 1}}>
+            <${Suspense} fallback=${html`Loading...`}>
+              <${MinerPanel} node=${node} miner=${miner} />
+            <//>
+          </div>
+        `)}
+      </div>
     </div>
   `
 }
 
-ReactDOM.render(
-  html`
-    <${LocalNet} />
-  `,
-  document.getElementById('app')
-)
+const appEl = document.getElementById('app')
+ReactDOM.createRoot(appEl).render(html`<${LocalNet} />`)

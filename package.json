@@ -16,14 +16,20 @@
   },
   "keywords": [],
   "author": "Jim Pick (@jimpick)",
-  "license": "MIT",
+  "license": "(Apache-2.0 AND MIT)",
   "dependencies": {
+    "@filecoin-shipyard/lotus-client-provider-browser": "^0.0.3",
+    "@filecoin-shipyard/lotus-client-rpc": "^0.0.3",
+    "@filecoin-shipyard/lotus-client-schema": "^0.0.6",
+    "@openworklabs/filecoin-number": "^0.0.6",
+    "@pika/react": "^16.13.1",
+    "@pika/react-dom": "^16.13.1",
     "htm": "^3.0.3",
     "http-proxy": "^1.18.0",
     "it-pipe": "^1.1.0",
     "it-pushable": "^1.4.0",
-    "react": "npm:@pika/react",
-    "react-dom": "npm:@pika/react-dom",
+    "react": "npm:@jimpick/react-experimental@16.13.0-0",
+    "react-dom": "npm:@jimpick/react-dom-experimental@16.13.0-0",
     "react-json-view": "^1.19.1",
     "ws": "^7.2.3",
     "wscat": "^4.0.0"
@@ -31,7 +37,7 @@
   "devDependencies": {
     "hundreds": "^0.0.2",
     "isomorphic-fetch": "^2.2.1",
-    "mocha": "^7.1.0",
+    "mocha": "^7.1.1",
     "polendina": "^1.0.0",
     "snowpack": "^1.6.0",
     "standardx": "^5.0.0"
@@ -44,7 +50,11 @@
       "it-pushable",
       "react",
       "react-dom",
-      "react-json-view"
+      "react-json-view",
+      "@filecoin-shipyard/lotus-client-provider-browser",
+      "@filecoin-shipyard/lotus-client-rpc",
+      "@filecoin-shipyard/lotus-client-schema/prototype/testnet-v3.js",
+      "@openworklabs/filecoin-number"
     ]
   },
   "standardx": {

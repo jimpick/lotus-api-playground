@@ -5,3 +5,5 @@ package-lock.json
 yarn-error.log
 .nyc_output
 build
+dist
+.DS_Store
