@@ -1,3 +1,7 @@
+{
+  admin off
+}
+
 lotus.testground.ipfs.team
 
 log
@@ -33,6 +37,15 @@ route @api_testplan_0 {
   reverse_proxy localhost:30000
 }
 
+@api_ipfs_0 {
+    path_regexp api ^/api/0/ipfs/(.*)$
+}
+
+route @api_ipfs_0 {
+  strip_prefix /api/0/ipfs/* /api/0/ipfs
+  reverse_proxy localhost:31000
+}
+
 
 
 @api_node_1 {
@@ -60,6 +73,15 @@ route @api_miner_1 {
 route @api_testplan_1 {
   strip_prefix /api/1/testplan/* /api/1/testplan
   reverse_proxy localhost:30001
+}
+
+@api_ipfs_1 {
+    path_regexp api ^/api/1/ipfs/(.*)$
+}
+
+route @api_ipfs_1 {
+  strip_prefix /api/1/ipfs/* /api/1/ipfs
+  reverse_proxy localhost:31001
 }
 
 
@@ -91,6 +113,15 @@ route @api_testplan_2 {
   reverse_proxy localhost:30002
 }
 
+@api_ipfs_2 {
+    path_regexp api ^/api/2/ipfs/(.*)$
+}
+
+route @api_ipfs_2 {
+  strip_prefix /api/2/ipfs/* /api/2/ipfs
+  reverse_proxy localhost:31002
+}
+
 
 
 @api_node_3 {
@@ -118,6 +149,15 @@ route @api_miner_3 {
 route @api_testplan_3 {
   strip_prefix /api/3/testplan/* /api/3/testplan
   reverse_proxy localhost:30003
+}
+
+@api_ipfs_3 {
+    path_regexp api ^/api/3/ipfs/(.*)$
+}
+
+route @api_ipfs_3 {
+  strip_prefix /api/3/ipfs/* /api/3/ipfs
+  reverse_proxy localhost:31003
 }
 
 
@@ -149,6 +189,15 @@ route @api_testplan_4 {
   reverse_proxy localhost:30004
 }
 
+@api_ipfs_4 {
+    path_regexp api ^/api/4/ipfs/(.*)$
+}
+
+route @api_ipfs_4 {
+  strip_prefix /api/4/ipfs/* /api/4/ipfs
+  reverse_proxy localhost:31004
+}
+
 
 
 @api_node_5 {
@@ -178,6 +227,15 @@ route @api_testplan_5 {
   reverse_proxy localhost:30005
 }
 
+@api_ipfs_5 {
+    path_regexp api ^/api/5/ipfs/(.*)$
+}
+
+route @api_ipfs_5 {
+  strip_prefix /api/5/ipfs/* /api/5/ipfs
+  reverse_proxy localhost:31005
+}
+
 
 
 @api_node_6 {
@@ -205,6 +263,15 @@ route @api_miner_6 {
 route @api_testplan_6 {
   strip_prefix /api/6/testplan/* /api/6/testplan
   reverse_proxy localhost:30006
+}
+
+@api_ipfs_6 {
+    path_regexp api ^/api/6/ipfs/(.*)$
+}
+
+route @api_ipfs_6 {
+  strip_prefix /api/6/ipfs/* /api/6/ipfs
+  reverse_proxy localhost:31006
 }
 
 
@@ -350,6 +417,79 @@ route @api_miner_11 {
 route @api_testplan_11 {
   strip_prefix /api/11/testplan/* /api/11/testplan
   reverse_proxy localhost:30011
+}
+
+
+
+
+
+@tour_api_node_rpc_0 {
+    path_regexp tour_api ^/tour_api/0/node/rpc/(.*)$
+}
+
+route @tour_api_node_rpc_0 {
+  strip_prefix /tour_api/0/node/* /tour_api/0/node
+  reverse_proxy localhost:1234
+}
+
+@tour_api_node_rest_0_options {
+    path_regexp tour_api ^/tour_api/0/node/rest/(.*)$
+    method OPTIONS
+}
+
+route @tour_api_node_rest_0_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@tour_api_node_rest_0 {
+    path_regexp api ^/tour_api/0/node/rest/(.*)$
+}
+
+route @tour_api_node_rest_0 {
+  strip_prefix /tour_api/0/node/* /tour_api/0/node
+  reverse_proxy localhost:1234 {
+    header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+
+@tour_api_node_rpc_1 {
+    path_regexp tour_api ^/tour_api/1/node/rpc/(.*)$
+}
+
+route @tour_api_node_rpc_1 {
+  strip_prefix /tour_api/1/node/* /tour_api/1/node
+  reverse_proxy localhost:9200
+}
+
+@tour_api_node_rest_1_options {
+    path_regexp tour_api ^/tour_api/1/node/rest/(.*)$
+    method OPTIONS
+}
+
+route @tour_api_node_rest_1_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@tour_api_node_rest_1 {
+    path_regexp api ^/tour_api/0/node/rest/(.*)$
+}
+
+route @tour_api_node_rest_1 {
+  strip_prefix /tour_api/1/node/* /tour_api/1/node
+  reverse_proxy localhost:9200 {
+    header_down Access-Control-Allow-Origin "*"
+  }
 }
 
 
