@@ -15,7 +15,7 @@ file_server
 }
 
 route @api_node_0 {
-  strip_prefix /api/0/node/* /api/0/node
+  uri strip_prefix /api/0/node
   reverse_proxy localhost:11234
 }
 
@@ -24,7 +24,7 @@ route @api_node_0 {
 }
 
 route @api_miner_0 {
-  strip_prefix /api/0/miner/* /api/0/miner
+  uri strip_prefix /api/0/miner
   reverse_proxy localhost:12345
 }
 
@@ -33,7 +33,7 @@ route @api_miner_0 {
 }
 
 route @api_testplan_0 {
-  strip_prefix /api/0/testplan/* /api/0/testplan
+  uri strip_prefix /api/0/testplan
   reverse_proxy localhost:30000
 }
 
@@ -42,7 +42,7 @@ route @api_testplan_0 {
 }
 
 route @api_ipfs_0 {
-  strip_prefix /api/0/ipfs/* /api/0/ipfs
+  uri strip_prefix /api/0/ipfs
   reverse_proxy localhost:31000
 }
 
@@ -53,7 +53,7 @@ route @api_ipfs_0 {
 }
 
 route @api_node_1 {
-  strip_prefix /api/1/node/* /api/1/node
+  uri strip_prefix /api/1/node
   reverse_proxy localhost:11235
 }
 
@@ -62,7 +62,7 @@ route @api_node_1 {
 }
 
 route @api_miner_1 {
-  strip_prefix /api/1/miner/* /api/1/miner
+  uri strip_prefix /api/1/miner
   reverse_proxy localhost:12346
 }
 
@@ -71,7 +71,7 @@ route @api_miner_1 {
 }
 
 route @api_testplan_1 {
-  strip_prefix /api/1/testplan/* /api/1/testplan
+  uri strip_prefix /api/1/testplan
   reverse_proxy localhost:30001
 }
 
@@ -80,7 +80,7 @@ route @api_testplan_1 {
 }
 
 route @api_ipfs_1 {
-  strip_prefix /api/1/ipfs/* /api/1/ipfs
+  uri strip_prefix /api/1/ipfs
   reverse_proxy localhost:31001
 }
 
@@ -91,7 +91,7 @@ route @api_ipfs_1 {
 }
 
 route @api_node_2 {
-  strip_prefix /api/2/node/* /api/2/node
+  uri strip_prefix /api/2/node
   reverse_proxy localhost:11236
 }
 
@@ -100,7 +100,7 @@ route @api_node_2 {
 }
 
 route @api_miner_2 {
-  strip_prefix /api/2/miner/* /api/2/miner
+  uri strip_prefix /api/2/miner
   reverse_proxy localhost:12347
 }
 
@@ -109,7 +109,7 @@ route @api_miner_2 {
 }
 
 route @api_testplan_2 {
-  strip_prefix /api/2/testplan/* /api/2/testplan
+  uri strip_prefix /api/2/testplan
   reverse_proxy localhost:30002
 }
 
@@ -118,7 +118,7 @@ route @api_testplan_2 {
 }
 
 route @api_ipfs_2 {
-  strip_prefix /api/2/ipfs/* /api/2/ipfs
+  uri strip_prefix /api/2/ipfs
   reverse_proxy localhost:31002
 }
 
@@ -129,7 +129,7 @@ route @api_ipfs_2 {
 }
 
 route @api_node_3 {
-  strip_prefix /api/3/node/* /api/3/node
+  uri strip_prefix /api/3/node
   reverse_proxy localhost:11237
 }
 
@@ -138,7 +138,7 @@ route @api_node_3 {
 }
 
 route @api_miner_3 {
-  strip_prefix /api/3/miner/* /api/3/miner
+  uri strip_prefix /api/3/miner
   reverse_proxy localhost:12348
 }
 
@@ -147,7 +147,7 @@ route @api_miner_3 {
 }
 
 route @api_testplan_3 {
-  strip_prefix /api/3/testplan/* /api/3/testplan
+  uri strip_prefix /api/3/testplan
   reverse_proxy localhost:30003
 }
 
@@ -156,7 +156,7 @@ route @api_testplan_3 {
 }
 
 route @api_ipfs_3 {
-  strip_prefix /api/3/ipfs/* /api/3/ipfs
+  uri strip_prefix /api/3/ipfs
   reverse_proxy localhost:31003
 }
 
@@ -167,7 +167,7 @@ route @api_ipfs_3 {
 }
 
 route @api_node_4 {
-  strip_prefix /api/4/node/* /api/4/node
+  uri strip_prefix /api/4/node
   reverse_proxy localhost:11238
 }
 
@@ -176,7 +176,7 @@ route @api_node_4 {
 }
 
 route @api_miner_4 {
-  strip_prefix /api/4/miner/* /api/4/miner
+  uri strip_prefix /api/4/miner
   reverse_proxy localhost:12349
 }
 
@@ -185,7 +185,7 @@ route @api_miner_4 {
 }
 
 route @api_testplan_4 {
-  strip_prefix /api/4/testplan/* /api/4/testplan
+  uri strip_prefix /api/4/testplan
   reverse_proxy localhost:30004
 }
 
@@ -194,7 +194,7 @@ route @api_testplan_4 {
 }
 
 route @api_ipfs_4 {
-  strip_prefix /api/4/ipfs/* /api/4/ipfs
+  uri strip_prefix /api/4/ipfs
   reverse_proxy localhost:31004
 }
 
@@ -205,7 +205,7 @@ route @api_ipfs_4 {
 }
 
 route @api_node_5 {
-  strip_prefix /api/5/node/* /api/5/node
+  uri strip_prefix /api/5/node
   reverse_proxy localhost:11239
 }
 
@@ -214,7 +214,7 @@ route @api_node_5 {
 }
 
 route @api_miner_5 {
-  strip_prefix /api/5/miner/* /api/5/miner
+  uri strip_prefix /api/5/miner
   reverse_proxy localhost:12350
 }
 
@@ -223,7 +223,7 @@ route @api_miner_5 {
 }
 
 route @api_testplan_5 {
-  strip_prefix /api/5/testplan/* /api/5/testplan
+  uri strip_prefix /api/5/testplan
   reverse_proxy localhost:30005
 }
 
@@ -232,7 +232,7 @@ route @api_testplan_5 {
 }
 
 route @api_ipfs_5 {
-  strip_prefix /api/5/ipfs/* /api/5/ipfs
+  uri strip_prefix /api/5/ipfs
   reverse_proxy localhost:31005
 }
 
@@ -243,7 +243,7 @@ route @api_ipfs_5 {
 }
 
 route @api_node_6 {
-  strip_prefix /api/6/node/* /api/6/node
+  uri strip_prefix /api/6/node
   reverse_proxy localhost:11240
 }
 
@@ -252,7 +252,7 @@ route @api_node_6 {
 }
 
 route @api_miner_6 {
-  strip_prefix /api/6/miner/* /api/6/miner
+  uri strip_prefix /api/6/miner
   reverse_proxy localhost:12351
 }
 
@@ -261,7 +261,7 @@ route @api_miner_6 {
 }
 
 route @api_testplan_6 {
-  strip_prefix /api/6/testplan/* /api/6/testplan
+  uri strip_prefix /api/6/testplan
   reverse_proxy localhost:30006
 }
 
@@ -270,7 +270,7 @@ route @api_testplan_6 {
 }
 
 route @api_ipfs_6 {
-  strip_prefix /api/6/ipfs/* /api/6/ipfs
+  uri strip_prefix /api/6/ipfs
   reverse_proxy localhost:31006
 }
 
@@ -281,7 +281,7 @@ route @api_ipfs_6 {
 }
 
 route @api_node_7 {
-  strip_prefix /api/7/node/* /api/7/node
+  uri strip_prefix /api/7/node
   reverse_proxy localhost:11241
 }
 
@@ -290,7 +290,7 @@ route @api_node_7 {
 }
 
 route @api_miner_7 {
-  strip_prefix /api/7/miner/* /api/7/miner
+  uri strip_prefix /api/7/miner
   reverse_proxy localhost:12352
 }
 
@@ -299,7 +299,7 @@ route @api_miner_7 {
 }
 
 route @api_testplan_7 {
-  strip_prefix /api/7/testplan/* /api/7/testplan
+  uri strip_prefix /api/7/testplan
   reverse_proxy localhost:30007
 }
 
@@ -310,7 +310,7 @@ route @api_testplan_7 {
 }
 
 route @api_node_8 {
-  strip_prefix /api/8/node/* /api/8/node
+  uri strip_prefix /api/8/node
   reverse_proxy localhost:11242
 }
 
@@ -319,7 +319,7 @@ route @api_node_8 {
 }
 
 route @api_miner_8 {
-  strip_prefix /api/8/miner/* /api/8/miner
+  uri strip_prefix /api/8/miner
   reverse_proxy localhost:12353
 }
 
@@ -328,7 +328,7 @@ route @api_miner_8 {
 }
 
 route @api_testplan_8 {
-  strip_prefix /api/8/testplan/* /api/8/testplan
+  uri strip_prefix /api/8/testplan
   reverse_proxy localhost:30008
 }
 
@@ -339,7 +339,7 @@ route @api_testplan_8 {
 }
 
 route @api_node_9 {
-  strip_prefix /api/9/node/* /api/9/node
+  uri strip_prefix /api/9/node
   reverse_proxy localhost:11243
 }
 
@@ -348,7 +348,7 @@ route @api_node_9 {
 }
 
 route @api_miner_9 {
-  strip_prefix /api/9/miner/* /api/9/miner
+  uri strip_prefix /api/9/miner
   reverse_proxy localhost:12354
 }
 
@@ -357,7 +357,7 @@ route @api_miner_9 {
 }
 
 route @api_testplan_9 {
-  strip_prefix /api/9/testplan/* /api/9/testplan
+  uri strip_prefix /api/9/testplan
   reverse_proxy localhost:30009
 }
 
@@ -368,7 +368,7 @@ route @api_testplan_9 {
 }
 
 route @api_node_10 {
-  strip_prefix /api/10/node/* /api/10/node
+  uri strip_prefix /api/10/node
   reverse_proxy localhost:11244
 }
 
@@ -377,7 +377,7 @@ route @api_node_10 {
 }
 
 route @api_miner_10 {
-  strip_prefix /api/10/miner/* /api/10/miner
+  uri strip_prefix /api/10/miner
   reverse_proxy localhost:12355
 }
 
@@ -386,7 +386,7 @@ route @api_miner_10 {
 }
 
 route @api_testplan_10 {
-  strip_prefix /api/10/testplan/* /api/10/testplan
+  uri strip_prefix /api/10/testplan
   reverse_proxy localhost:30010
 }
 
@@ -397,7 +397,7 @@ route @api_testplan_10 {
 }
 
 route @api_node_11 {
-  strip_prefix /api/11/node/* /api/11/node
+  uri strip_prefix /api/11/node
   reverse_proxy localhost:11245
 }
 
@@ -406,7 +406,7 @@ route @api_node_11 {
 }
 
 route @api_miner_11 {
-  strip_prefix /api/11/miner/* /api/11/miner
+  uri strip_prefix /api/11/miner
   reverse_proxy localhost:12356
 }
 
@@ -415,21 +415,35 @@ route @api_miner_11 {
 }
 
 route @api_testplan_11 {
-  strip_prefix /api/11/testplan/* /api/11/testplan
+  uri strip_prefix /api/11/testplan
   reverse_proxy localhost:30011
 }
 
 
 
+@tour_api_node_rpc_0_options {
+    path_regexp api ^/tour_api/0/node/rpc/(.*)$
+    method OPTIONS
+}
 
+route @tour_api_node_rpc_0_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
 
 @tour_api_node_rpc_0 {
     path_regexp tour_api ^/tour_api/0/node/rpc/(.*)$
 }
 
 route @tour_api_node_rpc_0 {
-  strip_prefix /tour_api/0/node/* /tour_api/0/node
-  reverse_proxy localhost:1234
+  uri strip_prefix /tour_api/0/node
+  reverse_proxy localhost:9200 {
+    header_down Access-Control-Allow-Origin "*"
+  }
 }
 
 @tour_api_node_rest_0_options {
@@ -451,20 +465,78 @@ route @tour_api_node_rest_0_options {
 }
 
 route @tour_api_node_rest_0 {
-  strip_prefix /tour_api/0/node/* /tour_api/0/node
-  reverse_proxy localhost:1234 {
+  uri strip_prefix /tour_api/0/node
+  reverse_proxy localhost:9200 {
     header_down Access-Control-Allow-Origin "*"
   }
 }
 
+@tour_api_testplan_0_options {
+    path_regexp api ^/tour_api/0/testplan/(.*)$
+    method OPTIONS
+}
+
+route @tour_api_testplan_0_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+#@tour_api_testplan_downloads_0 {
+#    path_regexp api ^/tour_api/0/testplan/downloads/(.*)$
+#}
+
+#route @tour_api_testplan_downloads_0 {
+#  uri strip_prefix /tour_api/0/testplan/downloads
+#  reverse_proxy 10.0.1.52:5000 {
+#    header_down Access-Control-Allow-Origin "*"
+#  }
+#}
+
+@tour_api_testplan_0 {
+    path_regexp api ^/tour_api/0/testplan/(.*)$
+}
+
+route @tour_api_testplan_0 {
+  uri strip_prefix /tour_api/0/testplan
+  header Access-Control-Allow-Origin "*"
+  file_server {
+    root ./testplan/0
+    browse
+  }
+}
+
+
+
+
+
+
+@tour_api_node_rpc_1_options {
+    path_regexp api ^/tour_api/1/node/rpc/(.*)$
+    method OPTIONS
+}
+
+route @tour_api_node_rpc_1_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
 
 @tour_api_node_rpc_1 {
     path_regexp tour_api ^/tour_api/1/node/rpc/(.*)$
 }
 
 route @tour_api_node_rpc_1 {
-  strip_prefix /tour_api/1/node/* /tour_api/1/node
-  reverse_proxy localhost:9200
+  uri strip_prefix /tour_api/1/node
+  reverse_proxy localhost:1234 {
+    header_down Access-Control-Allow-Origin "*"
+  }
 }
 
 @tour_api_node_rest_1_options {
@@ -486,9 +558,22 @@ route @tour_api_node_rest_1_options {
 }
 
 route @tour_api_node_rest_1 {
-  strip_prefix /tour_api/1/node/* /tour_api/1/node
-  reverse_proxy localhost:9200 {
+  uri strip_prefix /tour_api/1/node
+  reverse_proxy localhost:1234 {
     header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+@tour_api_testplan_1 {
+    path_regexp api ^/tour_api/1/testplan/(.*)$
+}
+
+route @tour_api_testplan_1 {
+  uri strip_prefix /tour_api/1/testplan
+  header Access-Control-Allow-Origin "*"
+  file_server {
+    root ./testplan/1
+    browse
   }
 }
 

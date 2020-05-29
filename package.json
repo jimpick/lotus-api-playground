@@ -5,8 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "caddy2 run --config Caddyfile.dev",
-    "prod": "sudo caddy2 run --config Caddyfile.prod",
+    "dev": "caddy run --config Caddyfile.dev",
+    "prod": "sudo caddy run --config Caddyfile.prod",
     "nginx": "nginx -c nginx.conf -p `pwd`",
     "prepare": "snowpack",
     "lint": "standardx",
