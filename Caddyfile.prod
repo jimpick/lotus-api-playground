@@ -491,12 +491,12 @@ route @tour_api_testplan_2 {
 
 
 
-@interop68_api_node_rpc_0_options {
-    path_regexp api ^/interop68_api/0/node/rpc/(.*)$
+@interop616_api_node_rpc_0_options {
+    path_regexp api ^/interop616_api/0/node/rpc/(.*)$
     method OPTIONS
 }
 
-route @interop68_api_node_rpc_0_options {
+route @interop616_api_node_rpc_0_options {
     header Connection "keep-alive"
     header Access-Control-Allow-Origin "*"
     header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
@@ -505,23 +505,23 @@ route @interop68_api_node_rpc_0_options {
     respond "" 204
 }
 
-@interop68_api_node_rpc_0 {
-    path_regexp interop68_api ^/interop68_api/0/node/rpc/(.*)$
+@interop616_api_node_rpc_0 {
+    path_regexp interop616_api ^/interop616_api/0/node/rpc/(.*)$
 }
 
-route @interop68_api_node_rpc_0 {
-  uri strip_prefix /interop68_api/0/node
+route @interop616_api_node_rpc_0 {
+  uri strip_prefix /interop616_api/0/node
   reverse_proxy ec2-52-13-91-110.us-west-2.compute.amazonaws.com:1234 {
     header_down Access-Control-Allow-Origin "*"
   }
 }
 
-@interop68_api_node_rest_0_options {
-    path_regexp tour_api ^/interop68_api/0/node/rest/(.*)$
+@interop616_api_node_rest_0_options {
+    path_regexp tour_api ^/interop616_api/0/node/rest/(.*)$
     method OPTIONS
 }
 
-route @interop68_api_node_rest_0_options {
+route @interop616_api_node_rest_0_options {
     header Connection "keep-alive"
     header Access-Control-Allow-Origin "*"
     header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
@@ -530,23 +530,23 @@ route @interop68_api_node_rest_0_options {
     respond "" 204
 }
 
-@interop68_api_node_rest_0 {
-    path_regexp api ^/interop68_api/0/node/rest/(.*)$
+@interop616_api_node_rest_0 {
+    path_regexp api ^/interop616_api/0/node/rest/(.*)$
 }
 
-route @interop68_api_node_rest_0 {
-  uri strip_prefix /interop68_api/0/node
+route @interop616_api_node_rest_0 {
+  uri strip_prefix /interop616_api/0/node
   reverse_proxy ec2-52-13-91-110.us-west-2.compute.amazonaws.com:1234 {
     header_down Access-Control-Allow-Origin "*"
   }
 }
 
-@interop68_api_testplan_0_options {
-    path_regexp api ^/interop68_api/0/testplan/(.*)$
+@interop616_api_testplan_0_options {
+    path_regexp api ^/interop616_api/0/testplan/(.*)$
     method OPTIONS
 }
 
-route @interop68_api_testplan_0_options {
+route @interop616_api_testplan_0_options {
     header Connection "keep-alive"
     header Access-Control-Allow-Origin "*"
     header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
@@ -566,26 +566,26 @@ route @interop68_api_testplan_0_options {
 #  }
 #}
 
-@interop68_api_testplan_downloads_0 {
-    path_regexp api ^/interop68_api/0/testplan/downloads/(.*)$
+@interop616_api_testplan_downloads_0 {
+    path_regexp api ^/interop616_api/0/testplan/downloads/(.*)$
 }
 
-route @interop68_api_testplan_downloads_0 {
-  uri strip_prefix /interop68_api/0/testplan/downloads
+route @interop616_api_testplan_downloads_0 {
+  uri strip_prefix /interop616_api/0/testplan/downloads
   reverse_proxy ec2-52-13-91-110.us-west-2.compute.amazonaws.com:80 {
     header_down Access-Control-Allow-Origin "*"
   }
 }
 
-@interop68_api_testplan_0 {
-    path_regexp api ^/interop68_api/0/testplan/(.*)$
+@interop616_api_testplan_0 {
+    path_regexp api ^/interop616_api/0/testplan/(.*)$
 }
 
-route @interop68_api_testplan_0 {
-  uri strip_prefix /interop68_api/0/testplan
+route @interop616_api_testplan_0 {
+  uri strip_prefix /interop616_api/0/testplan
   header Access-Control-Allow-Origin "*"
   file_server {
-    root ./testplan/interop68/0
+    root ./testplan/interop616/0
     browse
   }
 }
