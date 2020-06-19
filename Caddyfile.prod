@@ -9,6 +9,7 @@ log
 file_server
 
 
+# nginx server in testground handles CORS
 
 @api_node_0 {
     path_regexp api ^/api/0/node/(.*)$
@@ -16,7 +17,9 @@ file_server
 
 route @api_node_0 {
   uri strip_prefix /api/0/node
-  reverse_proxy localhost:11234
+  reverse_proxy localhost:11234 {
+    header_down Access-Control-Allow-Origin "*"
+  }
 }
 
 @api_miner_0 {
@@ -555,17 +558,6 @@ route @interop616_api_testplan_0_options {
     respond "" 204
 }
 
-#@tour_api_testplan_downloads_0 {
-#    path_regexp api ^/tour_api/0/testplan/downloads/(.*)$
-#}
-
-#route @tour_api_testplan_downloads_0 {
-#  uri strip_prefix /tour_api/0/testplan/downloads
-#  reverse_proxy 10.0.1.52:5000 {
-#    header_down Access-Control-Allow-Origin "*"
-#  }
-#}
-
 @interop616_api_testplan_downloads_0 {
     path_regexp api ^/interop616_api/0/testplan/downloads/(.*)$
 }
@@ -591,6 +583,8 @@ route @interop616_api_testplan_0 {
 }
 
 
+
+
 @api_geoip_options {
     path_regexp api ^/api/geoip/(.*)$
     method OPTIONS
@@ -613,6 +607,97 @@ route @api_geoip {
   uri strip_prefix /api/geoip
   reverse_proxy localhost:3003 {
     header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+
+# Testnet
+
+@testnet_api_node_rpc_0_options {
+    path_regexp api ^/testnet_api/0/node/rpc/(.*)$
+    method OPTIONS
+}
+
+route @testnet_api_node_rpc_0_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@testnet_api_node_rpc_0 {
+    path_regexp testnet_api ^/testnet_api/0/node/rpc/(.*)$
+}
+
+route @testnet_api_node_rpc_0 {
+  uri strip_prefix /testnet_api/0/node
+  reverse_proxy ec2-18-237-148-165.us-west-2.compute.amazonaws.com:1234 {
+    header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+@testnet_api_node_rest_0_options {
+    path_regexp tour_api ^/testnet_api/0/node/rest/(.*)$
+    method OPTIONS
+}
+
+route @testnet_api_node_rest_0_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@testnet_api_node_rest_0 {
+    path_regexp api ^/testnet_api/0/node/rest/(.*)$
+}
+
+route @testnet_api_node_rest_0 {
+  uri strip_prefix /testnet_api/0/node
+  reverse_proxy ec2-18-237-148-165.us-west-2.compute.amazonaws.com:1234 {
+    header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+@testnet_api_testplan_0_options {
+    path_regexp api ^/testnet_api/0/testplan/(.*)$
+    method OPTIONS
+}
+
+route @testnet_api_testplan_0_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@testnet_api_testplan_downloads_0 {
+    path_regexp api ^/testnet_api/0/testplan/downloads/(.*)$
+}
+
+route @testnet_api_testplan_downloads_0 {
+  uri strip_prefix /testnet_api/0/testplan/downloads
+  reverse_proxy ec2-18-237-148-165.us-west-2.compute.amazonaws.com:80 {
+    header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+@testnet_api_testplan_0 {
+    path_regexp api ^/testnet_api/0/testplan/(.*)$
+}
+
+route @testnet_api_testplan_0 {
+  uri strip_prefix /testnet_api/0/testplan
+  header Access-Control-Allow-Origin "*"
+  file_server {
+    root ./testplan/testnet/0
+    browse
   }
 }
 
