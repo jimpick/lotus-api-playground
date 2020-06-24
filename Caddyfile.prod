@@ -613,6 +613,8 @@ route @api_geoip {
 
 # Testnet
 
+## Node 0
+
 @testnet_api_node_rpc_0_options {
     path_regexp api ^/testnet_api/0/node/rpc/(.*)$
     method OPTIONS
@@ -697,6 +699,96 @@ route @testnet_api_testplan_0 {
   header Access-Control-Allow-Origin "*"
   file_server {
     root ./testplan/testnet/0
+    browse
+  }
+}
+
+## Node 1
+
+@testnet_api_node_rpc_1_options {
+    path_regexp api ^/testnet_api/1/node/rpc/(.*)$
+    method OPTIONS
+}
+
+route @testnet_api_node_rpc_1_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@testnet_api_node_rpc_1 {
+    path_regexp testnet_api ^/testnet_api/1/node/rpc/(.*)$
+}
+
+route @testnet_api_node_rpc_1 {
+  uri strip_prefix /testnet_api/1/node
+  reverse_proxy ec2-52-42-74-3.us-west-2.compute.amazonaws.com:1234 {
+    header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+@testnet_api_node_rest_1_options {
+    path_regexp tour_api ^/testnet_api/1/node/rest/(.*)$
+    method OPTIONS
+}
+
+route @testnet_api_node_rest_1_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@testnet_api_node_rest_1 {
+    path_regexp api ^/testnet_api/1/node/rest/(.*)$
+}
+
+route @testnet_api_node_rest_1 {
+  uri strip_prefix /testnet_api/1/node
+  reverse_proxy ec2-52-42-74-3.us-west-2.compute.amazonaws.com:1234 {
+    header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+@testnet_api_testplan_1_options {
+    path_regexp api ^/testnet_api/1/testplan/(.*)$
+    method OPTIONS
+}
+
+route @testnet_api_testplan_1_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
+@testnet_api_testplan_downloads_1 {
+    path_regexp api ^/testnet_api/1/testplan/downloads/(.*)$
+}
+
+route @testnet_api_testplan_downloads_1 {
+  uri strip_prefix /testnet_api/1/testplan/downloads
+  reverse_proxy ec2-52-42-74-3.us-west-2.compute.amazonaws.com:80 {
+    header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+@testnet_api_testplan_1 {
+    path_regexp api ^/testnet_api/1/testplan/(.*)$
+}
+
+route @testnet_api_testplan_1 {
+  uri strip_prefix /testnet_api/1/testplan
+  header Access-Control-Allow-Origin "*"
+  file_server {
+    root ./testplan/testnet/1
     browse
   }
 }
