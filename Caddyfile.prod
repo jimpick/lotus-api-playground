@@ -49,6 +49,15 @@ route @api_ipfs_0 {
   reverse_proxy localhost:31000
 }
 
+@api_ipfs_gateway_0 {
+    path_regexp api ^/api/0/ipfs-gateway/(.*)$
+}
+
+route @api_ipfs_gateway_0 {
+  uri strip_prefix /api/0/ipfs-gateway
+  reverse_proxy localhost:32000
+}
+
 
 
 @api_node_1 {
@@ -85,6 +94,15 @@ route @api_testplan_1 {
 route @api_ipfs_1 {
   uri strip_prefix /api/1/ipfs
   reverse_proxy localhost:31001
+}
+
+@api_ipfs_gateway_1 {
+    path_regexp api ^/api/1/ipfs-gateway/(.*)$
+}
+
+route @api_ipfs_gateway_1 {
+  uri strip_prefix /api/1/ipfs-gateway
+  reverse_proxy localhost:32001
 }
 
 
@@ -125,6 +143,15 @@ route @api_ipfs_2 {
   reverse_proxy localhost:31002
 }
 
+@api_ipfs_gateway_2 {
+    path_regexp api ^/api/2/ipfs-gateway/(.*)$
+}
+
+route @api_ipfs_gateway_2 {
+  uri strip_prefix /api/2/ipfs-gateway
+  reverse_proxy localhost:32002
+}
+
 
 
 @api_node_3 {
@@ -161,6 +188,15 @@ route @api_testplan_3 {
 route @api_ipfs_3 {
   uri strip_prefix /api/3/ipfs
   reverse_proxy localhost:31003
+}
+
+@api_ipfs_gateway_3 {
+    path_regexp api ^/api/3/ipfs-gateway/(.*)$
+}
+
+route @api_ipfs_gateway_3 {
+  uri strip_prefix /api/3/ipfs-gateway
+  reverse_proxy localhost:32003
 }
 
 
@@ -201,6 +237,15 @@ route @api_ipfs_4 {
   reverse_proxy localhost:31004
 }
 
+@api_ipfs_gateway_4 {
+    path_regexp api ^/api/4/ipfs-gateway/(.*)$
+}
+
+route @api_ipfs_gateway_4 {
+  uri strip_prefix /api/4/ipfs-gateway
+  reverse_proxy localhost:32004
+}
+
 
 
 @api_node_5 {
@@ -238,6 +283,16 @@ route @api_ipfs_5 {
   uri strip_prefix /api/5/ipfs
   reverse_proxy localhost:31005
 }
+
+@api_ipfs_gateway_5 {
+    path_regexp api ^/api/5/ipfs-gateway/(.*)$
+}
+
+route @api_ipfs_gateway_5 {
+  uri strip_prefix /api/5/ipfs-gateway
+  reverse_proxy localhost:32005
+}
+
 
 
 
