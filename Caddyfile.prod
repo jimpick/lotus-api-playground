@@ -549,12 +549,12 @@ route @tour_api_testplan_2 {
 
 
 
-@butterfly_api_node_rpc_0_options {
-    path_regexp api ^/butterfly_api/0/node/rpc/(.*)$
+@calibration_api_node_rpc_0_options {
+    path_regexp api ^/calibration_api/0/node/rpc/(.*)$
     method OPTIONS
 }
 
-route @butterfly_api_node_rpc_0_options {
+route @calibration_api_node_rpc_0_options {
     header Connection "keep-alive"
     header Access-Control-Allow-Origin "*"
     header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
@@ -563,23 +563,23 @@ route @butterfly_api_node_rpc_0_options {
     respond "" 204
 }
 
-@butterfly_api_node_rpc_0 {
-    path_regexp butterfly_api ^/butterfly_api/0/node/rpc/(.*)$
+@calibration_api_node_rpc_0 {
+    path_regexp calibration_api ^/calibration_api/0/node/rpc/(.*)$
 }
 
-route @butterfly_api_node_rpc_0 {
-  uri strip_prefix /butterfly_api/0/node
-  reverse_proxy ec2-52-13-91-110.us-west-2.compute.amazonaws.com:1234 {
+route @calibration_api_node_rpc_0 {
+  uri strip_prefix /calibration_api/0/node
+  reverse_proxy ec2-34-223-41-21.us-west-2.compute.amazonaws.com:1234 {
     header_down Access-Control-Allow-Origin "*"
   }
 }
 
-@butterfly_api_node_rest_0_options {
-    path_regexp tour_api ^/butterfly_api/0/node/rest/(.*)$
+@calibration_api_node_rest_0_options {
+    path_regexp tour_api ^/calibration_api/0/node/rest/(.*)$
     method OPTIONS
 }
 
-route @butterfly_api_node_rest_0_options {
+route @calibration_api_node_rest_0_options {
     header Connection "keep-alive"
     header Access-Control-Allow-Origin "*"
     header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
@@ -588,23 +588,23 @@ route @butterfly_api_node_rest_0_options {
     respond "" 204
 }
 
-@butterfly_api_node_rest_0 {
-    path_regexp api ^/butterfly_api/0/node/rest/(.*)$
+@calibration_api_node_rest_0 {
+    path_regexp api ^/calibration_api/0/node/rest/(.*)$
 }
 
-route @butterfly_api_node_rest_0 {
-  uri strip_prefix /butterfly_api/0/node
-  reverse_proxy ec2-52-13-91-110.us-west-2.compute.amazonaws.com:1234 {
+route @calibration_api_node_rest_0 {
+  uri strip_prefix /calibration_api/0/node
+  reverse_proxy ec2-34-223-41-21.us-west-2.compute.amazonaws.com:1234 {
     header_down Access-Control-Allow-Origin "*"
   }
 }
 
-@butterfly_api_testplan_0_options {
-    path_regexp api ^/butterfly_api/0/testplan/(.*)$
+@calibration_api_testplan_0_options {
+    path_regexp api ^/calibration_api/0/testplan/(.*)$
     method OPTIONS
 }
 
-route @butterfly_api_testplan_0_options {
+route @calibration_api_testplan_0_options {
     header Connection "keep-alive"
     header Access-Control-Allow-Origin "*"
     header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
@@ -613,26 +613,26 @@ route @butterfly_api_testplan_0_options {
     respond "" 204
 }
 
-@butterfly_api_testplan_downloads_0 {
-    path_regexp api ^/butterfly_api/0/testplan/downloads/(.*)$
+@calibration_api_testplan_downloads_0 {
+    path_regexp api ^/calibration_api/0/testplan/downloads/(.*)$
 }
 
-route @butterfly_api_testplan_downloads_0 {
-  uri strip_prefix /butterfly_api/0/testplan/downloads
-  reverse_proxy ec2-52-13-91-110.us-west-2.compute.amazonaws.com:80 {
+route @calibration_api_testplan_downloads_0 {
+  uri strip_prefix /calibration_api/0/testplan/downloads
+  reverse_proxy ec2-34-223-41-21.us-west-2.compute.amazonaws.com:80 {
     header_down Access-Control-Allow-Origin "*"
   }
 }
 
-@butterfly_api_testplan_0 {
-    path_regexp api ^/butterfly_api/0/testplan/(.*)$
+@calibration_api_testplan_0 {
+    path_regexp api ^/calibration_api/0/testplan/(.*)$
 }
 
-route @butterfly_api_testplan_0 {
-  uri strip_prefix /butterfly_api/0/testplan
+route @calibration_api_testplan_0 {
+  uri strip_prefix /calibration_api/0/testplan
   header Access-Control-Allow-Origin "*"
   file_server {
-    root ./testplan/butterfly/0
+    root ./testplan/calibration/0
     browse
   }
 }
