@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "caddy run --config Caddyfile.dev",
     "prod": "sudo caddy run --config Caddyfile.prod",
+    "nuc": "caddy run --config Caddyfile.nuc",
     "nginx": "nginx -c nginx.conf -p `pwd`",
     "prepare": "snowpack",
     "lint": "standardx",
