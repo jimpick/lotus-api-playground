@@ -118,7 +118,7 @@ route @spacerace_api_node_rpc_1_options {
 }
 
 route @spacerace_api_node_rpc_1 {
-  uri strip_prefix /spacerace_api/0/node
+  uri strip_prefix /spacerace_api/1/node
   reverse_proxy 66.70.191.245:1234 {
     header_down Access-Control-Allow-Origin "*"
   }
@@ -212,6 +212,17 @@ route @api_geoip {
   uri strip_prefix /api/geoip
   reverse_proxy localhost:3003 {
     header_down Access-Control-Allow-Origin "*"
+  }
+}
+
+# Wiki
+
+route /wiki/* {
+  #respond "Hello, world!"
+  uri strip_prefix /wiki
+  file_server {
+    root /home/lotus1/filecoin-wiki-test/wiki-small-blocks/
+    browse
   }
 }
 
