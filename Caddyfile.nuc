@@ -217,9 +217,24 @@ route @api_geoip {
 
 # Wiki
 
+@wiki_options {
+    path_regexp api ^/wiki/(.*)$
+    method OPTIONS
+}
+
+route @wiki_options {
+    header Connection "keep-alive"
+    header Access-Control-Allow-Origin "*"
+    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+    header Access-Control-Max-Age "86400"
+    header Access-Control-Allow-Headers "*"
+    respond "" 204
+}
+
 route /wiki/* {
   #respond "Hello, world!"
   uri strip_prefix /wiki
+  header Access-Control-Allow-Origin "*"
   file_server {
     root /home/lotus1/filecoin-wiki-test/wiki-small-blocks/
     browse
