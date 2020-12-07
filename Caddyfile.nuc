@@ -2,243 +2,385 @@
   admin off
 }
 
-lotus.jimpick.com
+lotus.jimpick.com {
 
-log
+  log
 
-file_server
+  file_server
 
 
-@spacerace_api_node_rpc_0_options {
-    path_regexp api ^/spacerace_api/0/node/rpc/(.*)$
-    method OPTIONS
-}
+  @spacerace_api_node_rpc_0_options {
+      path_regexp api ^/spacerace_api/0/node/rpc/(.*)$
+      method OPTIONS
+  }
 
-route @spacerace_api_node_rpc_0_options {
-    header Connection "keep-alive"
+  route @spacerace_api_node_rpc_0_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_node_rpc_0 {
+      path_regexp spacerace_api ^/spacerace_api/0/node/rpc/(.*)$
+  }
+
+  route @spacerace_api_node_rpc_0 {
+    uri strip_prefix /spacerace_api/0/node
+    reverse_proxy localhost:1234 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_node_rest_0_options {
+      path_regexp spacerace_api ^/spacerace_api/0/node/rest/(.*)$
+      method OPTIONS
+  }
+
+  route @spacerace_api_node_rest_0_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_node_rest_0 {
+      path_regexp api ^/spacerace_api/0/node/rest/(.*)$
+  }
+
+  route @spacerace_api_node_rest_0 {
+    uri strip_prefix /spacerace_api/0/node
+    reverse_proxy localhost:1234 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_testplan_0_options {
+      path_regexp api ^/spacerace_api/0/testplan/(.*)$
+      method OPTIONS
+  }
+
+  route @spacerace_api_testplan_0_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_testplan_downloads_0 {
+      path_regexp api ^/spacerace_api/0/testplan/downloads/(.*)$
+  }
+
+  route @spacerace_api_testplan_downloads_0 {
+    uri strip_prefix /spacerace_api/0/testplan/downloads
+    reverse_proxy locahost:80 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_testplan_0 {
+      path_regexp api ^/spacerace_api/0/testplan/(.*)$
+  }
+
+  route @spacerace_api_testplan_0 {
+    uri strip_prefix /spacerace_api/0/testplan
     header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-@spacerace_api_node_rpc_0 {
-    path_regexp spacerace_api ^/spacerace_api/0/node/rpc/(.*)$
-}
-
-route @spacerace_api_node_rpc_0 {
-  uri strip_prefix /spacerace_api/0/node
-  reverse_proxy localhost:1234 {
-    header_down Access-Control-Allow-Origin "*"
+    file_server {
+      root ./testplan/spacerace/0
+      browse
+    }
   }
-}
-
-@spacerace_api_node_rest_0_options {
-    path_regexp spacerace_api ^/spacerace_api/0/node/rest/(.*)$
-    method OPTIONS
-}
-
-route @spacerace_api_node_rest_0_options {
-    header Connection "keep-alive"
-    header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-@spacerace_api_node_rest_0 {
-    path_regexp api ^/spacerace_api/0/node/rest/(.*)$
-}
-
-route @spacerace_api_node_rest_0 {
-  uri strip_prefix /spacerace_api/0/node
-  reverse_proxy localhost:1234 {
-    header_down Access-Control-Allow-Origin "*"
-  }
-}
-
-@spacerace_api_testplan_0_options {
-    path_regexp api ^/spacerace_api/0/testplan/(.*)$
-    method OPTIONS
-}
-
-route @spacerace_api_testplan_0_options {
-    header Connection "keep-alive"
-    header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-@spacerace_api_testplan_downloads_0 {
-    path_regexp api ^/spacerace_api/0/testplan/downloads/(.*)$
-}
-
-route @spacerace_api_testplan_downloads_0 {
-  uri strip_prefix /spacerace_api/0/testplan/downloads
-  reverse_proxy locahost:80 {
-    header_down Access-Control-Allow-Origin "*"
-  }
-}
-
-@spacerace_api_testplan_0 {
-    path_regexp api ^/spacerace_api/0/testplan/(.*)$
-}
-
-route @spacerace_api_testplan_0 {
-  uri strip_prefix /spacerace_api/0/testplan
-  header Access-Control-Allow-Origin "*"
-  file_server {
-    root ./testplan/spacerace/0
-    browse
-  }
-}
 
 # 1
 
-@spacerace_api_node_rpc_1_options {
-    path_regexp api ^/spacerace_api/1/node/rpc/(.*)$
-    method OPTIONS
-}
+  @spacerace_api_node_rpc_1_options {
+      path_regexp api ^/spacerace_api/1/node/rpc/(.*)$
+      method OPTIONS
+  }
 
-route @spacerace_api_node_rpc_1_options {
-    header Connection "keep-alive"
+  route @spacerace_api_node_rpc_1_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_node_rpc_1 {
+      path_regexp spacerace_api ^/spacerace_api/1/node/rpc/(.*)$
+  }
+
+  route @spacerace_api_node_rpc_1 {
+    uri strip_prefix /spacerace_api/1/node
+    reverse_proxy 66.70.191.245:1234 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_node_rest_1_options {
+      path_regexp spacerace_api ^/spacerace_api/1/node/rest/(.*)$
+      method OPTIONS
+  }
+
+  route @spacerace_api_node_rest_1_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_node_rest_1 {
+      path_regexp api ^/spacerace_api/1/node/rest/(.*)$
+  }
+
+  route @spacerace_api_node_rest_1 {
+    uri strip_prefix /spacerace_api/1/node
+    reverse_proxy 66.70.191.245:1234 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_testplan_1_options {
+      path_regexp api ^/spacerace_api/1/testplan/(.*)$
+      method OPTIONS
+  }
+
+  route @spacerace_api_testplan_1_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_testplan_downloads_1 {
+      path_regexp api ^/spacerace_api/1/testplan/downloads/(.*)$
+  }
+
+  route @spacerace_api_testplan_downloads_1 {
+    uri strip_prefix /spacerace_api/1/testplan/downloads
+    reverse_proxy 66.70.191.245:80 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_testplan_1 {
+      path_regexp api ^/spacerace_api/1/testplan/(.*)$
+  }
+
+  route @spacerace_api_testplan_1 {
+    uri strip_prefix /spacerace_api/1/testplan
     header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-@spacerace_api_node_rpc_1 {
-    path_regexp spacerace_api ^/spacerace_api/1/node/rpc/(.*)$
-}
-
-route @spacerace_api_node_rpc_1 {
-  uri strip_prefix /spacerace_api/1/node
-  reverse_proxy 66.70.191.245:1234 {
-    header_down Access-Control-Allow-Origin "*"
+    file_server {
+      root ./testplan/spacerace/1
+      browse
+    }
   }
-}
 
-@spacerace_api_node_rest_1_options {
-    path_regexp spacerace_api ^/spacerace_api/1/node/rest/(.*)$
-    method OPTIONS
-}
+# 2
 
-route @spacerace_api_node_rest_1_options {
-    header Connection "keep-alive"
+  @spacerace_api_node_rpc_2_options {
+      path_regexp api ^/spacerace_api/2/node/rpc/(.*)$
+      method OPTIONS
+  }
+
+  route @spacerace_api_node_rpc_2_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_node_rpc_2 {
+      path_regexp spacerace_api ^/spacerace_api/2/node/rpc/(.*)$
+  }
+
+  route @spacerace_api_node_rpc_2 {
+    uri strip_prefix /spacerace_api/2/node
+    reverse_proxy 66.70.191.245:9001 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_node_rest_2_options {
+      path_regexp spacerace_api ^/spacerace_api/2/node/rest/(.*)$
+      method OPTIONS
+  }
+
+  route @spacerace_api_node_rest_2_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_node_rest_2 {
+      path_regexp api ^/spacerace_api/2/node/rest/(.*)$
+  }
+
+  route @spacerace_api_node_rest_2 {
+    uri strip_prefix /spacerace_api/2/node
+    reverse_proxy 66.70.191.245:9001 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_testplan_2_options {
+      path_regexp api ^/spacerace_api/2/testplan/(.*)$
+      method OPTIONS
+  }
+
+  route @spacerace_api_testplan_2_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @spacerace_api_testplan_downloads_2 {
+      path_regexp api ^/spacerace_api/2/testplan/downloads/(.*)$
+  }
+
+  route @spacerace_api_testplan_downloads_2 {
+    uri strip_prefix /spacerace_api/2/testplan/downloads
+    reverse_proxy 66.70.191.245:80 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
+
+  @spacerace_api_testplan_2 {
+      path_regexp api ^/spacerace_api/2/testplan/(.*)$
+  }
+
+  route @spacerace_api_testplan_2 {
+    uri strip_prefix /spacerace_api/2/testplan
     header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-@spacerace_api_node_rest_1 {
-    path_regexp api ^/spacerace_api/1/node/rest/(.*)$
-}
-
-route @spacerace_api_node_rest_1 {
-  uri strip_prefix /spacerace_api/1/node
-  reverse_proxy 66.70.191.245:1234 {
-    header_down Access-Control-Allow-Origin "*"
+    file_server {
+      root ./testplan/spacerace/2
+      browse
+    }
   }
-}
-
-@spacerace_api_testplan_1_options {
-    path_regexp api ^/spacerace_api/1/testplan/(.*)$
-    method OPTIONS
-}
-
-route @spacerace_api_testplan_1_options {
-    header Connection "keep-alive"
-    header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-@spacerace_api_testplan_downloads_1 {
-    path_regexp api ^/spacerace_api/0/testplan/downloads/(.*)$
-}
-
-route @spacerace_api_testplan_downloads_1 {
-  uri strip_prefix /spacerace_api/1/testplan/downloads
-  reverse_proxy 66.70.191.245:80 {
-    header_down Access-Control-Allow-Origin "*"
-  }
-}
-
-@spacerace_api_testplan_1 {
-    path_regexp api ^/spacerace_api/1/testplan/(.*)$
-}
-
-route @spacerace_api_testplan_1 {
-  uri strip_prefix /spacerace_api/1/testplan
-  header Access-Control-Allow-Origin "*"
-  file_server {
-    root ./testplan/spacerace/1
-    browse
-  }
-}
 
 
 # geo-ip
 
-@api_geoip_options {
-    path_regexp api ^/api/geoip/(.*)$
-    method OPTIONS
-}
-
-route @api_geoip_options {
-    header Connection "keep-alive"
-    header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-@api_geoip {
-    path_regexp api ^/api/geoip/(.*)$
-}
-
-route @api_geoip {
-  uri strip_prefix /api/geoip
-  reverse_proxy localhost:3003 {
-    header_down Access-Control-Allow-Origin "*"
+  @api_geoip_options {
+      path_regexp api ^/api/geoip/(.*)$
+      method OPTIONS
   }
-}
+
+  route @api_geoip_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  @api_geoip {
+      path_regexp api ^/api/geoip/(.*)$
+  }
+
+  route @api_geoip {
+    uri strip_prefix /api/geoip
+    reverse_proxy localhost:3003 {
+      header_down Access-Control-Allow-Origin "*"
+    }
+  }
 
 # Wiki
 
-@wiki_options {
-    path_regexp api ^/wiki/(.*)$
-    method OPTIONS
-}
-
-route @wiki_options {
-    header Connection "keep-alive"
-    header Access-Control-Allow-Origin "*"
-    header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
-    header Access-Control-Max-Age "86400"
-    header Access-Control-Allow-Headers "*"
-    respond "" 204
-}
-
-route /wiki/* {
-  #respond "Hello, world!"
-  uri strip_prefix /wiki
-  header Access-Control-Allow-Origin "*"
-  file_server {
-    root /home/lotus1/filecoin-wiki-test/wiki-small-blocks/
-    browse
+  @wiki_options {
+      path_regexp api ^/wiki/(.*)$
+      method OPTIONS
   }
+
+  route @wiki_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+  route /wiki/* {
+    #respond "Hello, world!"
+    uri strip_prefix /wiki
+    header Access-Control-Allow-Origin "*"
+    file_server {
+      root /home/lotus1/filecoin-wiki-test/wiki-small-blocks/
+      browse
+    }
+  }
+
+}
+
+sssh.v6z.me {
+  log
+
+  route / {
+    file_server {
+      root /home/jim/rootcache-nuc/sssh.v6z.me/root
+      browse
+    }
+  }
+}
+
+infura.jimpick.com {
+
+  log
+
+  @infura_options {
+      method OPTIONS
+  }
+
+  route @infura_options {
+      header Connection "keep-alive"
+      header Access-Control-Allow-Origin "*"
+      header Access-Control-Allow-Methods "POST, GET, PUT, OPTIONS, DELETE"
+      header Access-Control-Max-Age "86400"
+      header Access-Control-Allow-Headers "*"
+      respond "" 204
+  }
+
+
+  reverse_proxy https://filecoin.infura.io {
+      header_up   Host filecoin.infura.io
+      header_down Access-Control-Allow-Origin "*"
+  }
+  reverse_proxy https://filecoin.infura.io
+
+}
+
+
+ipfs.jimpick.com:10100 {
+  log
+
+  reverse_proxy 10.0.1.19:4005
+}
+
+lotus.jimpick.com:10101 {
+  log
+
+  reverse_proxy 66.70.191.245:24002
 }
 
 
