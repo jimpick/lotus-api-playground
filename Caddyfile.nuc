@@ -383,4 +383,10 @@ lotus.jimpick.com:10101 {
   reverse_proxy 66.70.191.245:24002
 }
 
+lotus.jimpick.com:10102 {
+  log
+
+  reverse_proxy 127.0.0.1:10151
+}
+
 
