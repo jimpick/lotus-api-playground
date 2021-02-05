@@ -2,6 +2,7 @@
   admin off
 }
 
+
 lotus.jimpick.com {
 
   log
@@ -372,6 +373,17 @@ sssh.v6z.me {
   }
 }
 
+hex.camp {
+  log
+
+  route /* {
+    file_server {
+      root /home/jim/rootcache-nuc/hex.camp/root
+      browse
+    }
+  }
+}
+
 infura.jimpick.com {
 
   log
@@ -415,6 +427,191 @@ lotus.jimpick.com:10102 {
   log
 
   reverse_proxy 127.0.0.1:10151
+}
+
+jimp.whimsicalmachines.org {
+  	reverse_proxy 10.0.1.57:6082
+}
+
+*.jimp.whimsicalmachines.org {
+	tls {
+	    dns route53 {
+	    }
+	}
+  	reverse_proxy 10.0.1.57:6082
+}
+
+#jimp-2.whimsicalmachines.org *.jimp-2.whimsicalmachines.org {
+#jimp-3.whimsicalmachines.org *.jimp-3.whimsicalmachines.org {
+#jimp.raun4egt.hex.camp *.jimp.raun4egt.hex.camp {
+#jimp-raun4egt.hex.camp *.jimp-raun4egt.hex.camp {
+
+raun4eez.hex.camp {
+	respond "Hello, raun4eez"
+}
+
+*.raun4eez.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4eez"
+}
+
+raun4egx.hex.camp {
+	respond "Hello, raun4egx"
+}
+
+*.raun4egx.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4egx"
+}
+
+raun4egv.hex.camp {
+	respond "Hello, raun4egv"
+}
+
+*.raun4egv.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4egv"
+}
+
+raun4egd.hex.camp {
+	respond "Hello, raun4egd"
+}
+
+*.raun4egd.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4egd"
+}
+
+raun4fzf.hex.camp {
+	respond "Hello, raun4fzf"
+}
+
+*.raun4fzf.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4fzf"
+}
+
+raun4egt.hex.camp {
+  	reverse_proxy 10.0.1.13:6082
+}
+
+*.raun4egt.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+  	reverse_proxy 10.0.1.13:6082
+}
+
+raun4egr.hex.camp {
+	respond "Hello, raun4egr"
+}
+
+*.raun4egr.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4egr"
+}
+
+raun4eg5.hex.camp {
+	respond "Hello, raun4eg5"
+}
+
+*.raun4eg5.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4eg5"
+}
+
+raun4egl.hex.camp {
+	respond "Hello, raun4egl"
+}
+
+*.raun4egl.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4egl"
+}
+
+raun4fzn.hex.camp {
+	respond "Hello, raun4fzn"
+}
+
+*.raun4fzn.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4fzn"
+}
+
+raun4eg3.hex.camp {
+	respond "Hello, raun4eg3"
+}
+
+*.raun4eg3.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4eg3"
+}
+
+raun4egz.hex.camp {
+	respond "Hello, raun4egz"
+}
+
+*.raun4egz.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4egz"
+}
+
+raun4evx.hex.camp {
+	respond "Hello, raun4evx"
+}
+
+*.raun4evx.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4evx"
+}
+
+raun4f3h.hex.camp {
+	respond "Hello, raun4f3h"
+}
+
+*.raun4f3h.hex.camp {
+	tls {
+	    dns route53 {
+	    }
+	}
+	respond "Hello, raun4f3h"
 }
 
 
