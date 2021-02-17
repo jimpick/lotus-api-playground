@@ -521,7 +521,7 @@ lotus.jimpick.com:10102 {
 }
 
 jimp.whimsicalmachines.org {
-  	reverse_proxy 10.0.1.57:6082
+  reverse_proxy 192.168.1.74:6082
 }
 
 *.jimp.whimsicalmachines.org {
@@ -529,7 +529,7 @@ jimp.whimsicalmachines.org {
 	    dns route53 {
 	    }
 	}
-  	reverse_proxy 10.0.1.57:6082
+  reverse_proxy 192.168.1.74:6082
 }
 
 #jimp-2.whimsicalmachines.org *.jimp-2.whimsicalmachines.org {
