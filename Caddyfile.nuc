@@ -607,7 +607,8 @@ raun4fzf.hex.camp {
 
   @api-sync3 host api-e4dd0c2d8b9041ff2e57324da0342d1c.raun4egt.hex.camp
   reverse_proxy @api-sync3 192.168.1.73:6082 {
-    header_up Authorization "Bearer LnBbLnaeU8rMAOlYLtkYyYEzTe6sW4xyprTK1kynqGF"
+    #header_up Authorization "Bearer LnBbLnaeU8rMAOlYLtkYyYEzTe6sW4xyprTK1kynqGF"
+    header_up Authorization "{http.request.header.AuthHack}"
     header_down Access-Control-Allow-Origin "*"
     header_down X-Sheldon "woof-api-sync3"
   }
@@ -651,6 +652,7 @@ raun4fzf.hex.camp {
 # sync2: https://api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp#LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh
 # sync2: curl -H 'Authorization: Bearer LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh' https://api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp
 # sync2: wget -q -S -O - https://api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp 2>&1 | head -15
+# sync2: wget -q -S -O - --header="authhack: Bearer LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh" https://api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp 2>&1 | head -15
 
 
 *.raun4egr.hex.camp, raun4egr.hex.camp {
@@ -660,8 +662,10 @@ raun4fzf.hex.camp {
 	}
 
   @api1 host api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp
+  #@api1 host api-*.raun4egr.hex.camp
   reverse_proxy @api1 192.168.1.75:6080 {
-    header_up Authorization "Bearer LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh"
+    header_up Authorization "{http.request.header.authhack}"
+    #header_up Authorization "Bearer LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh"
     header_down Access-Control-Allow-Origin "*"
     header_down X-Sheldon "woof-api1"
   }
