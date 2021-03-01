@@ -597,28 +597,78 @@ raun4fzf.hex.camp {
 	respond "Hello, raun4fzf"
 }
 
-raun4egt.hex.camp {
-  	reverse_proxy 10.0.1.13:6082
-}
+# sync3: https://api-e4dd0c2d8b9041ff2e57324da0342d1c.raun4egt.hex.camp#LnBbLnaeU8rMAOlYLtkYyYEzTe6sW4xyprTK1kynqGF
 
-*.raun4egt.hex.camp {
+*.raun4egt.hex.camp, raun4egt.hex.camp {
 	tls {
 	    dns route53 {
 	    }
 	}
-  	reverse_proxy 10.0.1.13:6082
+
+  @api-sync3 host api-e4dd0c2d8b9041ff2e57324da0342d1c.raun4egt.hex.camp
+  reverse_proxy @api-sync3 192.168.1.73:6082 {
+    header_up Authorization "Bearer LnBbLnaeU8rMAOlYLtkYyYEzTe6sW4xyprTK1kynqGF"
+    header_down Access-Control-Allow-Origin "*"
+    header_down X-Sheldon "woof-api-sync3"
+  }
+
+  reverse_proxy 192.168.1.73:6082 {
+    header_down X-Sheldon "woof-default"
+  }
 }
 
-raun4egr.hex.camp {
-  	reverse_proxy 10.0.1.14:6080
-}
 
-*.raun4egr.hex.camp {
+#raun4egt.hex.camp {
+#  	reverse_proxy 192.168.1.73:6082
+#}
+
+#api-cb03e1f55c3f9560333de3368f961139.raun4egt.hex.camp {
+#	tls {
+#	    dns route53 {
+#	    }
+#	}
+#  reverse_proxy 192.168.1.73:6082 {
+#    header_up Authorization "Bearer _YNnn0nD7EJ1Iswt39WPA9FsJ81wxO_sGAMuyXknWty"
+#    header_down Access-Control-Allow-Origin "*"
+#    header_down X-Sheldon "woof"
+#  }
+#}
+
+#*.raun4egt.hex.camp {
+#	tls {
+#	    dns route53 {
+#	    }
+#	}
+#  	reverse_proxy 192.168.1.73:6082
+#}
+
+#raun4egr.hex.camp {
+#  	reverse_proxy 192.168.1.75:6080
+#}
+
+# https://api-d1436ee35a8203c94327beed4b45e1a8.raun4egr.hex.camp#hypegXDiTbjJanImatq2WmugME4OQxJaGB2p2vf0wP9
+
+# sync2: https://api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp#LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh
+# sync2: curl -H 'Authorization: Bearer LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh' https://api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp
+# sync2: wget -q -S -O - https://api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp 2>&1 | head -15
+
+
+*.raun4egr.hex.camp, raun4egr.hex.camp {
 	tls {
 	    dns route53 {
 	    }
 	}
-  	reverse_proxy 10.0.1.14:6080
+
+  @api1 host api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp
+  reverse_proxy @api1 192.168.1.75:6080 {
+    header_up Authorization "Bearer LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh"
+    header_down Access-Control-Allow-Origin "*"
+    header_down X-Sheldon "woof-api1"
+  }
+
+  reverse_proxy 192.168.1.75:6080 {
+    header_down X-Sheldon "woof-default"
+  }
 }
 
 raun4eg5.hex.camp {
