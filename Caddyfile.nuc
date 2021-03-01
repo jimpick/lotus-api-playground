@@ -607,7 +607,7 @@ raun4fzf.hex.camp {
 
   @api expression {host}.startsWith("api-")
   reverse_proxy @api 192.168.1.73:6082 {
-    header_up Authorization "{http.request.header.AuthHack}"
+    header_up Authorization "Bearer {http.request.uri.query.token}"
     header_down Access-Control-Allow-Origin "*"
     header_down X-Sheldon "woof-api"
   }
@@ -656,13 +656,18 @@ raun4fzf.hex.camp {
 
 *.raun4egr.hex.camp, raun4egr.hex.camp {
 	tls {
-	    dns route53 {
+    dns route53 {
 	    }
 	}
 
+  log {
+    format json
+    output file /var/log/hexcamp/raun4egr.log
+  }
+
   @api expression {host}.startsWith("api-")
   reverse_proxy @api 192.168.1.75:6080 {
-    header_up Authorization "{http.request.header.authhack}"
+    header_up Authorization "Bearer {http.request.uri.query.token}"
     header_down Access-Control-Allow-Origin "*"
     header_down X-Sheldon "woof-api"
   }
