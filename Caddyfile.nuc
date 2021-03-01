@@ -605,12 +605,11 @@ raun4fzf.hex.camp {
 	    }
 	}
 
-  @api-sync3 host api-e4dd0c2d8b9041ff2e57324da0342d1c.raun4egt.hex.camp
-  reverse_proxy @api-sync3 192.168.1.73:6082 {
-    #header_up Authorization "Bearer LnBbLnaeU8rMAOlYLtkYyYEzTe6sW4xyprTK1kynqGF"
+  @api expression {host}.startsWith("api-")
+  reverse_proxy @api 192.168.1.73:6082 {
     header_up Authorization "{http.request.header.AuthHack}"
     header_down Access-Control-Allow-Origin "*"
-    header_down X-Sheldon "woof-api-sync3"
+    header_down X-Sheldon "woof-api"
   }
 
   reverse_proxy 192.168.1.73:6082 {
@@ -661,13 +660,11 @@ raun4fzf.hex.camp {
 	    }
 	}
 
-  @api1 host api-1ccbe05d9b32ad7ebb690ba222c93700.raun4egr.hex.camp
-  #@api1 host api-*.raun4egr.hex.camp
-  reverse_proxy @api1 192.168.1.75:6080 {
+  @api expression {host}.startsWith("api-")
+  reverse_proxy @api 192.168.1.75:6080 {
     header_up Authorization "{http.request.header.authhack}"
-    #header_up Authorization "Bearer LUQLL1V5qlDytVTMslYnCFzGYPfqntsIMSSd4qfvkIh"
     header_down Access-Control-Allow-Origin "*"
-    header_down X-Sheldon "woof-api1"
+    header_down X-Sheldon "woof-api"
   }
 
   reverse_proxy 192.168.1.75:6080 {
