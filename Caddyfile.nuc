@@ -761,4 +761,10 @@ raun4f3h.hex.camp {
 	respond "Hello, raun4f3h"
 }
 
+app-index.cascadarama.com {
+  reverse_proxy 192.168.1.100:5050 {
+    header_down X-Sheldon "woof-app-index"
+  }
+}
+
 
