@@ -31,7 +31,7 @@ lotus.jimpick.com {
 
   route @mainnet_api_node_rpc_0 {
     uri strip_prefix /mainnet_api/0/node
-    reverse_proxy 66.70.191.245:1234 {
+    reverse_proxy 144.217.11.204:1234 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -56,7 +56,7 @@ lotus.jimpick.com {
 
   route @mainnet_api_node_rest_0 {
     uri strip_prefix /mainnet_api/0/node
-    reverse_proxy 66.70.191.245:1234 {
+    reverse_proxy 144.217.11.204:1234 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -81,7 +81,7 @@ lotus.jimpick.com {
 
   route @mainnet_api_testplan_downloads_0 {
     uri strip_prefix /mainnet_api/0/testplan/downloads
-    reverse_proxy 66.70.191.245:80 {
+    reverse_proxy 144.217.11.204:80 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -211,7 +211,7 @@ lotus.jimpick.com {
 
   route @spacerace_api_node_rpc_1 {
     uri strip_prefix /spacerace_api/1/node
-    reverse_proxy 66.70.191.245:1234 {
+    reverse_proxy 144.217.11.204:1234 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -236,7 +236,7 @@ lotus.jimpick.com {
 
   route @spacerace_api_node_rest_1 {
     uri strip_prefix /spacerace_api/1/node
-    reverse_proxy 66.70.191.245:1234 {
+    reverse_proxy 144.217.11.204:1234 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -261,7 +261,7 @@ lotus.jimpick.com {
 
   route @spacerace_api_testplan_downloads_1 {
     uri strip_prefix /spacerace_api/1/testplan/downloads
-    reverse_proxy 66.70.191.245:80 {
+    reverse_proxy 144.217.11.204:80 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -301,7 +301,7 @@ lotus.jimpick.com {
 
   route @spacerace_api_node_rpc_2 {
     uri strip_prefix /spacerace_api/2/node
-    reverse_proxy 66.70.191.245:9001 {
+    reverse_proxy 144.217.11.204:9001 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -326,7 +326,7 @@ lotus.jimpick.com {
 
   route @spacerace_api_node_rest_2 {
     uri strip_prefix /spacerace_api/2/node
-    reverse_proxy 66.70.191.245:9001 {
+    reverse_proxy 144.217.11.204:9001 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -351,7 +351,7 @@ lotus.jimpick.com {
 
   route @spacerace_api_testplan_downloads_2 {
     uri strip_prefix /spacerace_api/2/testplan/downloads
-    reverse_proxy 66.70.191.245:80 {
+    reverse_proxy 144.217.11.204:80 {
       header_down Access-Control-Allow-Origin "*"
     }
   }
@@ -511,7 +511,7 @@ ipfs.jimpick.com:10100 {
 lotus.jimpick.com:10101 {
   log
 
-  reverse_proxy 66.70.191.245:24002
+  reverse_proxy 144.217.11.204:24002
 }
 
 lotus.jimpick.com:10102 {
