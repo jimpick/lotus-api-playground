@@ -32,7 +32,7 @@
     "react": "npm:@jimpick/react-experimental@16.13.0-0",
     "react-dom": "npm:@jimpick/react-dom-experimental@16.13.0-0",
     "react-json-view": "^1.19.1",
-    "ws": "^7.2.3",
+    "ws": "^7.4.6",
     "wscat": "^4.0.0"
   },
   "devDependencies": {
